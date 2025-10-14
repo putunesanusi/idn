@@ -3,892 +3,926 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matematika Kelas 6 - Pak Chandra</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Media Pembelajaran PJOK - Gerak Dasar Lokomotor</title>
     <style>
         body {
             box-sizing: border-box;
+            font-family: 'Calibri', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #FFB6C1 0%, #87CEEB 50%, #98FB98 100%);
+            min-height: 100%;
         }
         
-        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
-        
-        * {
-            font-family: 'Comic Neue', cursive;
+        html {
+            height: 100%;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
-        .card-shadow {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .header {
+            text-align: center;
+            background: linear-gradient(45deg, #FF69B4, #00CED1, #32CD32);
+            color: white;
+            padding: 35px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
         }
         
-        .bounce {
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            margin: 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 1.4em;
+            margin: 15px 0 0 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .menu-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .menu-card:hover::before {
+            left: 100%;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-color: #FF69B4;
+        }
+        
+        .menu-card.active {
+            border-color: #00CED1;
+            background: linear-gradient(135deg, #E0F6FF, #B0E0E6);
+        }
+        
+        .menu-icon {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            display: block;
             animation: bounce 2s infinite;
         }
         
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
         
-        .float {
-            animation: float 3s ease-in-out infinite;
+        .menu-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
         }
         
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        .menu-desc {
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .content-area {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            display: none;
+            border: 3px solid #E0E0E0;
+        }
+        
+        .content-area.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-title {
+            font-size: 2.2em;
+            background: linear-gradient(45deg, #FF69B4, #00CED1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .materi-content {
+            font-size: 1.3em;
+            line-height: 1.9;
+            color: #333;
+            text-align: justify;
+        }
+        
+        .materi-content h3 {
+            background: linear-gradient(45deg, #32CD32, #00CED1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 18px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFF8DC, #F0F8FF, #F5FFFA);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #FFD700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #FFF0F5, #F0FFFF, #F5FFFA);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #FF69B4;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .student-form {
+            background: linear-gradient(135deg, #E6F3FF, #F0F8FF, #E0F6FF);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 3px solid #87CEEB;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .form-group input, .form-group select {
+            padding: 15px;
+            font-size: 1.3em;
+            border: 3px solid #00CED1;
+            border-radius: 15px;
+            width: 280px;
+            font-family: 'Calibri', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #FF69B4;
+            box-shadow: 0 0 10px rgba(255,105,180,0.3);
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #FF69B4, #00CED1, #32CD32);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.4em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Calibri', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .quiz-container {
+            display: none;
+        }
+        
+        .quiz-container.active {
+            display: block;
+        }
+        
+        .question-card {
+            background: linear-gradient(135deg, #FFF8DC, #F0F8FF);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 6px solid #FF69B4;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .question-number {
+            background: linear-gradient(45deg, #FF69B4, #00CED1);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-right: 18px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .question-text {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 18px;
+            display: inline-block;
+            vertical-align: top;
+            width: calc(100% - 70px);
+            font-weight: 500;
+        }
+        
+        .options {
+            margin-left: 63px;
+        }
+        
+        .option {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .option:hover {
+            background: linear-gradient(135deg, #E0F6FF, #F0F8FF);
+            border-color: #87CEEB;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+        }
+        
+        .score-display {
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF69B4);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: bold;
+            margin: 25px 0;
+            display: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .score-display.show {
+            display: block;
+            animation: scoreAppear 0.8s ease-out;
+        }
+        
+        @keyframes scoreAppear {
+            0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        
+        .conclusion-content {
+            text-align: center;
+            font-size: 1.4em;
+            line-height: 1.9;
+        }
+        
+        .motivation-box {
+            background: linear-gradient(135deg, #FFE4E1, #F0FFFF, #F5FFFA);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            border: 3px solid #FF69B4;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .motivation-box h3 {
+            background: linear-gradient(45deg, #FF69B4, #32CD32);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2em;
+            margin-bottom: 18px;
+        }
+        
+        .back-btn {
+            background: linear-gradient(45deg, #6C757D, #495057);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 25px;
+            font-family: 'Calibri', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .fun-fact {
+            background: linear-gradient(135deg, #E6E6FA, #F0F8FF);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #9370DB;
+            font-style: italic;
+        }
+        
+        .activity-card {
+            background: linear-gradient(135deg, #F0FFF0, #F5FFFA);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #32CD32;
         }
     </style>
 </head>
-<body class="gradient-bg min-h-full">
-    <div class="container mx-auto px-4 py-8">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-5xl font-bold text-white mb-4 bounce">🎓 Matematika Kelas 6 🎓</h1>
-            <p class="text-2xl text-yellow-200 font-bold">by Pak Chandra</p>
-            <div class="flex justify-center mt-4 space-x-4">
-                <span class="text-6xl float">📐</span>
-                <span class="text-6xl float" style="animation-delay: 0.5s;">📊</span>
-                <span class="text-6xl float" style="animation-delay: 1s;">🔢</span>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> Media Pembelajaran PJOK </h1>
+            <p>Petualangan Seru Gerak Dasar Lokomotor - Kelas 1 SD</p>
+        </div>
+
+        <div id="menu-section">
+            <div class="menu-container">
+                <div class="menu-card" onclick="showContent('materi')">
+                    <span class="menu-icon">📖</span>
+                    <div class="menu-title">Materi Pembelajaran</div>
+                    <div class="menu-desc">Jelajahi dunia gerak lokomotor</div>
+                </div>
+                
+                <div class="menu-card" onclick="showContent('contoh')">
+                    <span class="menu-icon">🧩</span>
+                    <div class="menu-title">Contoh Soal</div>
+                    <div class="menu-desc">Pelajari dengan contoh menarik</div>
+                </div>
+                
+                <div class="menu-card" onclick="showContent('latihan')">
+                    <span class="menu-icon">🎯</span>
+                    <div class="menu-title">Latihan Soal</div>
+                    <div class="menu-desc">Uji kemampuanmu!</div>
+                </div>
+                
+                <div class="menu-card" onclick="showContent('kesimpulan')">
+                    <span class="menu-icon">🏆</span>
+                    <div class="menu-title">Kesimpulan</div>
+                    <div class="menu-desc">Rangkuman dan semangat baru</div>
+                </div>
             </div>
         </div>
 
-        <!-- Main Menu -->
-        <div id="mainMenu" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-red-400 hover:bg-red-500 rounded-3xl p-6 card-shadow cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="showTopic('pecahan')">
-                <div class="text-center text-white">
-                    <div class="text-6xl mb-4">🍰</div>
-                    <h3 class="text-2xl font-bold mb-2">Operasi Hitung Pecahan</h3>
-                    <p class="text-lg">Belajar penjumlahan, pengurangan, perkalian, dan pembagian pecahan</p>
+        <!-- Materi Content -->
+        <div id="materi-content" class="content-area">
+            <div class="content-title">📖 Materi Pembelajaran</div>
+            <div class="materi-content">
+                <h3>🚀 Selamat Datang di Dunia Gerak Lokomotor!</h3>
+                <p>Hai adik-adik yang hebat! Hari ini kita akan berpetualang mempelajari gerak dasar lokomotor. Gerak lokomotor adalah gerakan ajaib yang membuat tubuh kita bisa berpindah dari satu tempat ke tempat lain. Bayangkan seperti superhero yang bisa terbang, melompat, dan berlari!</p>
+
+                <div class="fun-fact">
+                    <strong>🤔 Tahukah Kamu?</strong><br>
+                    Kata "lokomotor" berasal dari bahasa Latin "locus" yang berarti tempat dan "movere" yang berarti bergerak. Jadi lokomotor artinya bergerak berpindah tempat!
                 </div>
+
+                <h3>🏃‍♂️ Jenis-jenis Gerak Dasar Lokomotor</h3>
+                
+                <div class="activity-card">
+                    <p><strong>1. 🚶‍♀️ Berjalan - Gerakan Dasar Pertama</strong><br>
+                    Berjalan adalah gerakan paling natural yang kita lakukan setiap hari. Saat berjalan, kaki kita bergantian melangkah dengan ritme yang teratur. Yang istimewa dari berjalan adalah selalu ada satu kaki yang menyentuh tanah, jadi kita tidak pernah "melayang" di udara.</p>
+                    
+                    <p><em>Tips Berjalan yang Baik:</em> Tegakkan badan, pandangan lurus ke depan, ayunkan tangan secara natural, dan bernapas dengan tenang.</p>
+                </div>
+
+                <div class="activity-card">
+                    <p><strong>2. 🏃‍♂️ Berlari - Gerakan Penuh Energi</strong><br>
+                    Berlari adalah versi cepat dari berjalan. Yang membuat berlari istimewa adalah ada momen dimana kedua kaki kita tidak menyentuh tanah - seperti terbang sebentar! Berlari membuat jantung berdetak lebih cepat dan membuat kita merasa bersemangat.</p>
+                    
+                    <p><em>Tips Berlari yang Baik:</em> Condongkan badan sedikit ke depan, angkat lutut, mendarat dengan ujung kaki, dan jaga ritme napas.</p>
+                </div>
+
+                <div class="activity-card">
+                    <p><strong>3. 🦘 Melompat - Gerakan Seperti Kelinci</strong><br>
+                    Melompat menggunakan kedua kaki bersamaan untuk menolak dan mendarat. Seperti kelinci yang melompat-lompat! Melompat bisa dilakukan di tempat atau ke arah tertentu. Gerakan ini melatih kekuatan kaki dan keseimbangan tubuh.</p>
+                    
+                    <p><em>Tips Melompat yang Baik:</em> Tekuk lutut sebelum melompat, tolak dengan kedua kaki bersamaan, dan mendarat dengan lembut.</p>
+                </div>
+
+                <div class="activity-card">
+                    <p><strong>4. 🦶 Meloncat - Gerakan Satu Kaki</strong><br>
+                    Meloncat menggunakan satu kaki untuk menolak dan bisa mendarat dengan kaki yang sama atau berbeda. Seperti bermain engklek! Meloncat melatih keseimbangan dan koordinasi tubuh dengan sangat baik.</p>
+                    
+                    <p><em>Tips Meloncat yang Baik:</em> Jaga keseimbangan, fokus pada kaki penumpu, dan kontrol pendaratan.</p>
+                </div>
+
+                <h3>💪 Manfaat Luar Biasa Gerak Lokomotor</h3>
+                <div class="highlight-box">
+                    <ul>
+                        <li><strong>🫀 Jantung Sehat:</strong> Membuat jantung berdetak lebih kuat dan sehat</li>
+                        <li><strong>🦴 Tulang Kuat:</strong> Melatih tulang menjadi lebih kuat dan tidak mudah patah</li>
+                        <li><strong>🧠 Otak Cerdas:</strong> Meningkatkan aliran darah ke otak sehingga lebih pintar</li>
+                        <li><strong>😊 Mood Bahagia:</strong> Membuat tubuh mengeluarkan hormon kebahagiaan</li>
+                        <li><strong>⚖️ Keseimbangan:</strong> Melatih keseimbangan dan koordinasi tubuh</li>
+                        <li><strong>🤝 Sosial:</strong> Bisa bermain bersama teman-teman</li>
+                    </ul>
+                </div>
+
+                <h3>🎮 Permainan Seru dengan Gerak Lokomotor</h3>
+                
+                <div class="example-box">
+                    <p><strong>🏃‍♀️ Permainan "Kucing dan Tikus"</strong><br>
+                    Satu anak jadi kucing yang harus mengejar tikus-tikus lainnya. Permainan ini melatih berlari dan menghindar.</p>
+                    
+                    <p><strong>🦘 Permainan "Lomba Karung"</strong><br>
+                    Anak-anak melompat dalam karung dari start sampai finish. Melatih melompat dan keseimbangan.</p>
+                    
+                    <p><strong>🎯 Permainan "Engklek Warna-warni"</strong><br>
+                    Engklek dengan kotak berwarna-warni yang harus diinjak sesuai instruksi. Melatih meloncat dan konsentrasi.</p>
+                    
+                    <p><strong>🚶‍♂️ Permainan "Jalan Berbagai Gaya"</strong><br>
+                    Berjalan dengan berbagai gaya: jinjit, tumit, samping, mundur. Melatih variasi berjalan.</p>
+                </div>
+
+                <h3>🌟 Perkembangan Gerak Lokomotor pada Anak</h3>
+                <p>Setiap anak berkembang dengan kecepatannya masing-masing. Yang penting adalah terus berlatih dengan gembira! Mulai dari gerakan sederhana seperti berjalan, lalu bertahap ke gerakan yang lebih kompleks seperti berlari dan melompat.</p>
+
+                <div class="fun-fact">
+                    <strong>🎉 Fakta Menarik:</strong><br>
+                    Anak-anak belajar berjalan sekitar usia 12-15 bulan, berlari sekitar usia 2 tahun, dan melompat dengan kedua kaki sekitar usia 2-3 tahun. Setiap pencapaian adalah keajaiban!
+                </div>
+
+                <p>Dengan berlatih gerak dasar lokomotor setiap hari, tubuh kita akan menjadi sehat, kuat, lincah, dan bahagia. Mari bergerak dengan penuh semangat!</p>
+            </div>
+            <button class="back-btn" onclick="showMenu()">🔙 Kembali ke Menu</button>
+        </div>
+
+        <!-- Contoh Soal Content -->
+        <div id="contoh-content" class="content-area">
+            <div class="content-title">🧩 Contoh Soal dan Penyelesaian</div>
+            
+            <div class="example-box">
+                <h3 style="color: #FF69B4;">Contoh Soal 1:</h3>
+                <p><strong>Soal:</strong> Apa yang membedakan berlari dengan berjalan?</p>
+                <p>a) Tidak ada perbedaan<br>b) Berlari lebih lambat<br>c) Berlari ada saat kedua kaki tidak menyentuh tanah<br>d) Berlari hanya menggunakan satu kaki</p>
+                
+                <p><strong>Penyelesaian:</strong><br>
+                Perbedaan utama antara berlari dan berjalan terletak pada <strong>fase melayang</strong>. Saat berlari, ada momen dimana kedua kaki tidak menyentuh tanah bersamaan - seperti terbang sebentar! Sedangkan saat berjalan, selalu ada minimal satu kaki yang menyentuh tanah.</p>
+                
+                <p><strong>Jawaban: c) Berlari ada saat kedua kaki tidak menyentuh tanah</strong></p>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #00CED1;">Contoh Soal 2:</h3>
+                <p><strong>Soal:</strong> Manakah yang termasuk manfaat gerak lokomotor untuk kesehatan?</p>
+                <p>a) Membuat tubuh lemah<br>b) Membuat jantung sehat dan kuat<br>c) Membuat tulang rapuh<br>d) Membuat malas bergerak</p>
+                
+                <p><strong>Penyelesaian:</strong><br>
+                Gerak lokomotor memiliki banyak manfaat untuk kesehatan tubuh. Salah satu manfaat utamanya adalah <strong>membuat jantung sehat dan kuat</strong>. Saat kita bergerak, jantung berdetak lebih cepat dan memompa darah lebih baik ke seluruh tubuh, sehingga jantung menjadi lebih sehat.</p>
+                
+                <p><strong>Jawaban: b) Membuat jantung sehat dan kuat</strong></p>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #32CD32;">Contoh Soal 3:</h3>
+                <p><strong>Soal:</strong> Dalam permainan engklek, gerakan yang paling banyak digunakan adalah...</p>
+                <p>a) Berjalan<br>b) Berlari<br>c) Melompat<br>d) Meloncat</p>
+                
+                <p><strong>Penyelesaian:</strong><br>
+                Permainan engklek menggunakan gerakan <strong>meloncat</strong> karena pemain harus menggunakan satu kaki untuk berpindah dari satu kotak ke kotak lainnya. Meloncat berbeda dengan melompat yang menggunakan kedua kaki bersamaan. Dalam engklek, kita menolak dengan satu kaki dan mendarat dengan kaki yang sama.</p>
+                
+                <p><strong>Jawaban: d) Meloncat</strong></p>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #FFD700;">Contoh Soal 4:</h3>
+                <p><strong>Soal:</strong> Posisi badan yang benar saat berjalan adalah...</p>
+                <p>a) Membungkuk ke depan<br>b) Tegak dan pandangan ke depan<br>c) Miring ke samping<br>d) Menunduk ke bawah</p>
+                
+                <p><strong>Penyelesaian:</strong><br>
+                Saat berjalan yang benar, posisi badan harus <strong>tegak dan pandangan ke depan</strong>. Hal ini penting untuk menjaga keseimbangan, mencegah cedera, dan memastikan kita bisa melihat arah yang dituju dengan jelas. Posisi tegak juga membantu pernapasan menjadi lebih baik.</p>
+                
+                <p><strong>Jawaban: b) Tegak dan pandangan ke depan</strong></p>
+            </div>
+
+            <button class="back-btn" onclick="showMenu()">🔙 Kembali ke Menu</button>
+        </div>
+
+        <!-- Latihan Soal Content -->
+        <div id="latihan-content" class="content-area">
+            <div class="content-title">🎯 Latihan Soal</div>
+            
+            <div id="student-form" class="student-form">
+                <h3 style="color: #FF69B4;">🌟 Ayo Isi Data Diri Dulu! 🌟</h3>
+                <div class="form-group">
+                    <label for="student-name">✨ Nama Lengkap:</label>
+                    <input type="text" id="student-name" placeholder="Tulis nama lengkapmu di sini">
+                </div>
+                <div class="form-group">
+                    <label for="student-class">🏫 Kelas:</label>
+                    <select id="student-class">
+                        <option value="">Pilih Kelasmu</option>
+                        <option value="1">Kelas 1</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="startQuiz()">🚀 Mulai Petualangan Soal!</button>
+            </div>
+
+            <div id="quiz-container" class="quiz-container">
+                <div id="quiz-questions"></div>
+                <button class="btn" onclick="submitQuiz()" style="margin-top: 25px;">🏆 Lihat Hasilku!</button>
+                
+                <div id="score-display" class="score-display">
+                    <div id="score-text"></div>
+                </div>
+            </div>
+
+            <button class="back-btn" onclick="showMenu()">🔙 Kembali ke Menu</button>
+        </div>
+
+        <!-- Kesimpulan Content -->
+        <div id="kesimpulan-content" class="content-area">
+            <div class="content-title">🏆 Kesimpulan dan Motivasi</div>
+            
+            <div class="conclusion-content">
+                <h3 style="color: #00CED1;">📋 Rangkuman Pembelajaran Hari Ini</h3>
+                <p>Wah, perjalanan belajar kita hari ini sangat menyenangkan! Mari kita ingat kembali hal-hal penting yang sudah kita pelajari:</p>
+                
+                <div class="highlight-box">
+                    <ul style="text-align: left; font-size: 1.3em;">
+                        <li><strong>🚀 Gerak Lokomotor</strong> adalah gerakan ajaib yang membuat kita berpindah tempat</li>
+                        <li><strong>4 Gerakan Utama:</strong> Berjalan, Berlari, Melompat, dan Meloncat</li>
+                        <li><strong>💪 Manfaat Luar Biasa:</strong> Jantung sehat, tulang kuat, otak cerdas, dan mood bahagia</li>
+                        <li><strong>🎮 Permainan Seru:</strong> Engklek, kejar-kejaran, lomba karung, dan masih banyak lagi</li>
+                        <li><strong>✨ Teknik yang Benar:</strong> Setiap gerakan punya cara yang tepat untuk dilakukan</li>
+                    </ul>
+                </div>
+
+                <div class="motivation-box">
+                    <h3>🌟 Pesan Semangat untuk Kalian</h3>
+                    <p><strong>"Setiap langkah kecil adalah awal dari perjalanan besar!"</strong></p>
+                    <p>Adik-adik yang luar biasa, kalian sudah menunjukkan semangat belajar yang mengagumkan! Gerak dasar lokomotor bukan hanya pelajaran di buku, tapi petualangan seru yang bisa kalian lakukan setiap hari.</p>
+                    
+                    <div class="activity-card">
+                        <p>🏃‍♂️ <strong>Tantangan Harian:</strong></p>
+                        <ul style="text-align: left; display: inline-block;">
+                            <li>Berjalan ke sekolah dengan postur tegak</li>
+                            <li>Bermain kejar-kejaran saat istirahat</li>
+                            <li>Melompat-lompat kecil saat senang</li>
+                            <li>Bermain engklek dengan teman-teman</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #FFE4E1, #F0FFFF); border-radius: 20px; padding: 25px; margin: 25px 0; border: 3px solid #FF69B4;">
+                    <h3 style="color: #FF69B4;">🎉 Kata-kata Ajaib untuk Kalian</h3>
+                    <p style="font-size: 1.4em; font-weight: bold; color: #333;">
+                        "Kalian adalah bintang-bintang kecil yang bersinar terang! Setiap gerakan yang kalian lakukan adalah langkah menuju masa depan yang sehat dan bahagia. Terus bergerak, terus bermain, dan jadilah anak-anak hebat yang menginspirasi!"
+                    </p>
+                </div>
+
+                <div class="fun-fact">
+                    <strong>🌈 Ingat Selalu:</strong><br>
+                    Tidak ada yang namanya "tidak bisa" - yang ada hanya "belum bisa". Dengan latihan dan semangat, kalian pasti bisa menguasai semua gerakan lokomotor dengan sempurna!
+                </div>
+
+                <p style="font-size: 1.5em; color: #FF69B4; font-weight: bold;">
+                    🌟 Sampai jumpa di petualangan belajar selanjutnya! 🌟<br>
+                    <span style="font-size: 0.8em;">Tetap semangat dan terus bergerak! 🚀</span>
+                </p>
             </div>
             
-            <div class="bg-green-400 hover:bg-green-500 rounded-3xl p-6 card-shadow cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="showTopic('perbandingan')">
-                <div class="text-center text-white">
-                    <div class="text-6xl mb-4">⚖️</div>
-                    <h3 class="text-2xl font-bold mb-2">Perbandingan</h3>
-                    <p class="text-lg">Memahami konsep perbandingan dan skala</p>
-                </div>
-            </div>
-            
-            <div class="bg-blue-400 hover:bg-blue-500 rounded-3xl p-6 card-shadow cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="showTopic('bangun')">
-                <div class="text-center text-white">
-                    <div class="text-6xl mb-4">📐</div>
-                    <h3 class="text-2xl font-bold mb-2">Luas & Keliling Bangun Datar</h3>
-                    <p class="text-lg">Menghitung luas dan keliling berbagai bangun datar</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Topic Content -->
-        <div id="topicContent" class="hidden">
-            <!-- Navigation Buttons -->
-            <div class="flex justify-between mb-6">
-                <button onclick="showMainMenu()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
-                    ← Kembali ke Menu
-                </button>
-                <div class="flex space-x-4">
-                    <button id="materiBtn" onclick="showSection('materi')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
-                        📚 Materi
-                    </button>
-                    <button id="contohBtn" onclick="showSection('contoh')" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
-                        💡 Contoh Soal
-                    </button>
-                    <button id="latihanBtn" onclick="showSection('latihan')" class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
-                        ✏️ Latihan
-                    </button>
-                    <button id="kesimpulanBtn" onclick="showSection('kesimpulan')" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
-                        🎯 Kesimpulan
-                    </button>
-                </div>
-            </div>
-
-            <!-- Content Sections -->
-            <div id="contentArea" class="bg-white rounded-3xl p-8 card-shadow">
-                <!-- Content will be loaded here -->
-            </div>
-        </div>
-
-        <!-- Student Form -->
-        <div id="studentForm" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 card-shadow">
-                <h3 class="text-3xl font-bold text-center mb-6 text-purple-600">📝 Data Siswa</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xl font-bold text-gray-700 mb-2">Nama:</label>
-                        <input type="text" id="studentName" class="w-full px-4 py-3 border-2 border-purple-300 rounded-xl text-lg focus:border-purple-500 focus:outline-none" placeholder="Masukkan nama kamu">
-                    </div>
-                    <div>
-                        <label class="block text-xl font-bold text-gray-700 mb-2">Kelas:</label>
-                        <select id="studentClass" class="w-full px-4 py-3 border-2 border-purple-300 rounded-xl text-lg focus:border-purple-500 focus:outline-none">
-                            <option value="6">Kelas 6</option>
-                        </select>
-                    </div>
-                    <div class="flex space-x-4 mt-6">
-                        <button onclick="startQuiz()" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl text-xl font-bold transition-all duration-300">
-                            🚀 Mulai Latihan
-                        </button>
-                        <button onclick="closeStudentForm()" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-xl text-xl font-bold transition-all duration-300">
-                            ❌ Batal
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quiz Results -->
-        <div id="quizResults" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 card-shadow text-center">
-                <div id="resultIcon" class="text-8xl mb-4"></div>
-                <h3 class="text-3xl font-bold mb-4 text-purple-600">Hasil Latihan</h3>
-                <div id="resultContent" class="text-xl mb-6"></div>
-                <button onclick="closeResults()" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-xl text-xl font-bold transition-all duration-300">
-                    👍 OK
-                </button>
-            </div>
+            <button class="back-btn" onclick="showMenu()">🔙 Kembali ke Menu</button>
         </div>
     </div>
 
     <script>
-        let currentTopic = '';
-        let currentSection = '';
-        let quizQuestions = [];
-        let currentQuestionIndex = 0;
-        let score = 0;
+        let currentQuestions = [];
         let studentName = '';
         let studentClass = '';
+        let userAnswers = {};
 
-        // Topic data
-        const topics = {
-            pecahan: {
-                title: 'Operasi Hitung Pecahan',
-                icon: '🍰',
-                color: 'red',
-                materi: `
-                    <h2 class="text-3xl font-bold text-red-600 mb-6">🍰 Operasi Hitung Pecahan</h2>
-                    <div class="space-y-6 text-lg">
-                        <div class="bg-red-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-red-700 mb-4">📖 Apa itu Pecahan?</h3>
-                            <p class="mb-4">Pecahan adalah bilangan yang menunjukkan bagian dari keseluruhan. Contoh: 1/2 artinya 1 bagian dari 2 bagian yang sama.</p>
-                            <div class="text-center">
-                                <div class="inline-block bg-yellow-200 p-4 rounded-xl">
-                                    <span class="text-3xl">🍕</span>
-                                    <p class="text-sm mt-2">1 potong dari 2 potong pizza = 1/2</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-orange-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-orange-700 mb-4">➕ Penjumlahan Pecahan</h3>
-                            <p class="mb-2"><strong>Penyebut sama:</strong> Jumlahkan pembilangnya</p>
-                            <p class="mb-2">Contoh: 2/5 + 1/5 = 3/5</p>
-                            <p class="mb-2"><strong>Penyebut beda:</strong> Samakan penyebut dulu</p>
-                            <p>Contoh: 1/2 + 1/3 = 3/6 + 2/6 = 5/6</p>
-                        </div>
-                        
-                        <div class="bg-green-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-green-700 mb-4">➖ Pengurangan Pecahan</h3>
-                            <p class="mb-2">Sama seperti penjumlahan, tapi kurangkan pembilangnya</p>
-                            <p>Contoh: 3/4 - 1/4 = 2/4 = 1/2</p>
-                        </div>
-                        
-                        <div class="bg-blue-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-blue-700 mb-4">✖️ Perkalian Pecahan</h3>
-                            <p class="mb-2">Kalikan pembilang dengan pembilang, penyebut dengan penyebut</p>
-                            <p>Contoh: 2/3 × 1/4 = 2/12 = 1/6</p>
-                        </div>
-                        
-                        <div class="bg-purple-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-purple-700 mb-4">➗ Pembagian Pecahan</h3>
-                            <p class="mb-2">Kalikan dengan kebalikan pecahan pembagi</p>
-                            <p>Contoh: 1/2 ÷ 1/4 = 1/2 × 4/1 = 4/2 = 2</p>
-                        </div>
-                    </div>
-                `,
-                contoh: `
-                    <h2 class="text-3xl font-bold text-red-600 mb-6">💡 Contoh Soal Pecahan</h2>
-                    <div class="space-y-6">
-                        <div class="bg-yellow-50 p-6 rounded-2xl border-l-4 border-yellow-400">
-                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">Soal 1: Penjumlahan</h3>
-                            <p class="text-xl mb-4">Hitunglah: 2/5 + 1/5</p>
-                            <div class="bg-white p-4 rounded-xl">
-                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
-                                <p>Karena penyebutnya sama (5), kita tinggal menjumlahkan pembilangnya:</p>
-                                <p class="text-xl font-bold text-center my-4">2/5 + 1/5 = (2+1)/5 = 3/5</p>
-                                <p class="text-green-600 font-bold">Jawaban: 3/5</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-400">
-                            <h3 class="text-2xl font-bold text-blue-700 mb-4">Soal 2: Penjumlahan Penyebut Beda</h3>
-                            <p class="text-xl mb-4">Hitunglah: 1/3 + 1/6</p>
-                            <div class="bg-white p-4 rounded-xl">
-                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
-                                <p>1. Cari KPK dari 3 dan 6 = 6</p>
-                                <p>2. Ubah ke penyebut yang sama:</p>
-                                <p>   1/3 = 2/6</p>
-                                <p>   1/6 = 1/6</p>
-                                <p class="text-xl font-bold text-center my-4">2/6 + 1/6 = 3/6 = 1/2</p>
-                                <p class="text-green-600 font-bold">Jawaban: 1/2</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-400">
-                            <h3 class="text-2xl font-bold text-green-700 mb-4">Soal 3: Perkalian</h3>
-                            <p class="text-xl mb-4">Hitunglah: 2/3 × 3/4</p>
-                            <div class="bg-white p-4 rounded-xl">
-                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
-                                <p>Kalikan pembilang dengan pembilang, penyebut dengan penyebut:</p>
-                                <p class="text-xl font-bold text-center my-4">2/3 × 3/4 = (2×3)/(3×4) = 6/12 = 1/2</p>
-                                <p class="text-green-600 font-bold">Jawaban: 1/2</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                questions: [
-                    {
-                        question: "Hasil dari 3/7 + 2/7 adalah...",
-                        options: ["4/7", "5/7", "6/7", "5/14"],
-                        correct: 1
-                    },
-                    {
-                        question: "Hasil dari 5/8 - 2/8 adalah...",
-                        options: ["3/8", "7/8", "3/16", "7/16"],
-                        correct: 0
-                    },
-                    {
-                        question: "Hasil dari 1/2 + 1/4 adalah...",
-                        options: ["2/6", "2/8", "3/4", "1/6"],
-                        correct: 2
-                    },
-                    {
-                        question: "Hasil dari 2/3 × 1/4 adalah...",
-                        options: ["2/12", "3/7", "2/7", "1/6"],
-                        correct: 3
-                    },
-                    {
-                        question: "Hasil dari 3/4 - 1/2 adalah...",
-                        options: ["1/4", "2/2", "1/2", "2/4"],
-                        correct: 0
-                    },
-                    {
-                        question: "Hasil dari 1/3 + 2/6 adalah...",
-                        options: ["3/9", "2/3", "1/2", "4/6"],
-                        correct: 1
-                    },
-                    {
-                        question: "Hasil dari 2/5 × 3/4 adalah...",
-                        options: ["6/20", "5/9", "3/10", "6/9"],
-                        correct: 2
-                    },
-                    {
-                        question: "Hasil dari 7/8 - 3/8 adalah...",
-                        options: ["4/8", "10/8", "4/16", "1/2"],
-                        correct: 3
-                    },
-                    {
-                        question: "Hasil dari 1/4 ÷ 1/2 adalah...",
-                        options: ["1/8", "1/2", "2", "1/6"],
-                        correct: 1
-                    },
-                    {
-                        question: "Hasil dari 2/3 + 1/6 adalah...",
-                        options: ["3/9", "5/6", "1/2", "4/9"],
-                        correct: 1
-                    }
-                ]
+        const questions = [
+            {
+                question: "Gerakan yang membuat tubuh berpindah dari satu tempat ke tempat lain disebut...",
+                options: ["Gerak non-lokomotor", "Gerak lokomotor", "Gerak manipulatif", "Gerak refleks"],
+                correct: 1
             },
-            perbandingan: {
-                title: 'Perbandingan',
-                icon: '⚖️',
-                color: 'green',
-                materi: `
-                    <h2 class="text-3xl font-bold text-green-600 mb-6">⚖️ Perbandingan</h2>
-                    <div class="space-y-6 text-lg">
-                        <div class="bg-green-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-green-700 mb-4">📖 Apa itu Perbandingan?</h3>
-                            <p class="mb-4">Perbandingan adalah cara membandingkan dua atau lebih besaran yang sejenis.</p>
-                            <div class="text-center">
-                                <div class="inline-block bg-yellow-200 p-4 rounded-xl">
-                                    <span class="text-3xl">👦👧</span>
-                                    <p class="text-sm mt-2">Perbandingan anak laki-laki : perempuan = 3 : 2</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-blue-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-blue-700 mb-4">📏 Cara Menulis Perbandingan</h3>
-                            <p class="mb-2">Ada 3 cara menulis perbandingan:</p>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li><strong>Dengan titik dua (:)</strong> → 3 : 4</li>
-                                <li><strong>Dengan kata "banding"</strong> → 3 banding 4</li>
-                                <li><strong>Dengan pecahan</strong> → 3/4</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-orange-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-orange-700 mb-4">🔄 Perbandingan Senilai</h3>
-                            <p class="mb-2">Jika satu besaran bertambah, besaran lain juga bertambah dengan perbandingan yang sama.</p>
-                            <p>Contoh: Semakin banyak barang yang dibeli, semakin mahal harganya.</p>
-                        </div>
-                        
-                        <div class="bg-purple-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-purple-700 mb-4">🔄 Perbandingan Berbalik Nilai</h3>
-                            <p class="mb-2">Jika satu besaran bertambah, besaran lain berkurang.</p>
-                            <p>Contoh: Semakin cepat kendaraan, semakin sedikit waktu yang diperlukan.</p>
-                        </div>
-                        
-                        <div class="bg-red-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-red-700 mb-4">📐 Skala</h3>
-                            <p class="mb-2">Skala adalah perbandingan antara jarak pada peta dengan jarak sebenarnya.</p>
-                            <p>Contoh: Skala 1 : 100.000 artinya 1 cm pada peta = 100.000 cm = 1 km di dunia nyata.</p>
-                        </div>
-                    </div>
-                `,
-                contoh: `
-                    <h2 class="text-3xl font-bold text-green-600 mb-6">💡 Contoh Soal Perbandingan</h2>
-                    <div class="space-y-6">
-                        <div class="bg-yellow-50 p-6 rounded-2xl border-l-4 border-yellow-400">
-                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">Soal 1: Perbandingan Sederhana</h3>
-                            <p class="text-xl mb-4">Di kelas ada 15 siswa laki-laki dan 10 siswa perempuan. Berapa perbandingan siswa laki-laki dan perempuan?</p>
-                            <div class="bg-white p-4 rounded-xl">
-                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
-                                <p>Perbandingan = laki-laki : perempuan</p>
-                                <p>= 15 : 10</p>
-                                <p>Sederhanakan dengan membagi kedua angka dengan FPB (5):</p>
-                                <p class="text-xl font-bold text-center my-4">15 : 10 = 3 : 2</p>
-                                <p class="text-green-600 font-bold">Jawaban: 3 : 2</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-400">
-                            <h3 class="text-2xl font-bold text-blue-700 mb-4">Soal 2: Perbandingan Senilai</h3>
-                            <p class="text-xl mb-4">Jika 3 kg apel harganya Rp 45.000, berapa harga 5 kg apel?</p>
-                            <div class="bg-white p-4 rounded-xl">
-                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
-                                <p>Gunakan perbandingan senilai:</p>
-                                <p>3 kg : Rp 45.000 = 5 kg : x</p>
-                                <p>3/45.000 = 5/x</p>
-                                <p>3x = 5 × 45.000</p>
-                                <p>3x = 225.000</p>
-                                <p class="text-xl font-bold text-center my-4">x = 75.000</p>
-                                <p class="text-green-600 font-bold">Jawaban: Rp 75.000</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-400">
-                            <h3 class="text-2xl font-bold text-green-700 mb-4">Soal 3: Skala Peta</h3>
-                            <p class="text-xl mb-4">Pada peta dengan skala 1 : 200.000, jarak dua kota adalah 4 cm. Berapa jarak sebenarnya?</p>
-                            <div class="bg-white p-4 rounded-xl">
-                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
-                                <p>Skala 1 : 200.000 artinya 1 cm pada peta = 200.000 cm sebenarnya</p>
-                                <p>Jarak pada peta = 4 cm</p>
-                                <p>Jarak sebenarnya = 4 × 200.000 = 800.000 cm</p>
-                                <p class="text-xl font-bold text-center my-4">800.000 cm = 8 km</p>
-                                <p class="text-green-600 font-bold">Jawaban: 8 km</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                questions: [
-                    {
-                        question: "Perbandingan 12 : 8 dalam bentuk paling sederhana adalah...",
-                        options: ["6 : 4", "3 : 2", "4 : 3", "2 : 3"],
-                        correct: 1
-                    },
-                    {
-                        question: "Jika 4 pensil harganya Rp 8.000, maka harga 6 pensil adalah...",
-                        options: ["Rp 10.000", "Rp 12.000", "Rp 14.000", "Rp 16.000"],
-                        correct: 1
-                    },
-                    {
-                        question: "Pada peta skala 1 : 100.000, jarak 2 cm sama dengan jarak sebenarnya...",
-                        options: ["2 km", "20 km", "200 km", "2000 km"],
-                        correct: 0
-                    },
-                    {
-                        question: "Perbandingan umur Ani dan Budi adalah 3 : 4. Jika umur Ani 12 tahun, umur Budi adalah...",
-                        options: ["15 tahun", "16 tahun", "18 tahun", "20 tahun"],
-                        correct: 1
-                    },
-                    {
-                        question: "Jika 5 orang dapat menyelesaikan pekerjaan dalam 12 hari, maka 3 orang akan menyelesaikan pekerjaan dalam...",
-                        options: ["15 hari", "18 hari", "20 hari", "24 hari"],
-                        correct: 2
-                    },
-                    {
-                        question: "Perbandingan 15 : 25 sama dengan...",
-                        options: ["2 : 3", "3 : 5", "5 : 3", "3 : 2"],
-                        correct: 1
-                    },
-                    {
-                        question: "Jika 8 kg beras harganya Rp 96.000, maka harga 3 kg beras adalah...",
-                        options: ["Rp 36.000", "Rp 32.000", "Rp 30.000", "Rp 24.000"],
-                        correct: 0
-                    },
-                    {
-                        question: "Skala 1 : 50.000 artinya 1 cm pada peta sama dengan...",
-                        options: ["50 m", "500 m", "5 km", "50 km"],
-                        correct: 1
-                    },
-                    {
-                        question: "Jika perbandingan kelereng Andi dan Budi 4 : 5, dan jumlah kelereng mereka 36, maka kelereng Andi adalah...",
-                        options: ["16 buah", "18 buah", "20 buah", "24 buah"],
-                        correct: 0
-                    },
-                    {
-                        question: "Mobil dengan kecepatan 60 km/jam menempuh jarak dalam 4 jam. Jika kecepatannya 80 km/jam, waktu yang diperlukan adalah...",
-                        options: ["2 jam", "3 jam", "5 jam", "6 jam"],
-                        correct: 1
-                    }
-                ]
+            {
+                question: "Perbedaan utama antara berjalan dan berlari adalah...",
+                options: ["Kecepatan yang sama", "Berlari ada fase melayang", "Tidak ada perbedaan", "Berjalan lebih cepat"],
+                correct: 1
             },
-            bangun: {
-                title: 'Luas dan Keliling Bangun Datar',
-                icon: '📐',
-                color: 'blue',
-                materi: `
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">📐 Luas dan Keliling Bangun Datar</h2>
-                    <div class="space-y-6 text-lg">
-                        <div class="bg-blue-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-blue-700 mb-4">📖 Pengertian</h3>
-                            <p class="mb-2"><strong>Keliling:</strong> Jumlah panjang semua sisi bangun datar</p>
-                            <p><strong>Luas:</strong> Besar daerah yang dibatasi oleh sisi-sisi bangun datar</p>
-                        </div>
-                        
-                        <div class="bg-red-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-red-700 mb-4">🟩 Persegi</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <p><strong>Keliling = 4 × sisi</strong></p>
-                                    <p><strong>Luas = sisi × sisi</strong></p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="w-20 h-20 bg-red-200 border-2 border-red-400 mx-auto"></div>
-                                    <p class="text-sm mt-2">Persegi</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-green-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-green-700 mb-4">📱 Persegi Panjang</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <p><strong>Keliling = 2 × (panjang + lebar)</strong></p>
-                                    <p><strong>Luas = panjang × lebar</strong></p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="w-24 h-16 bg-green-200 border-2 border-green-400 mx-auto"></div>
-                                    <p class="text-sm mt-2">Persegi Panjang</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-yellow-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">🔺 Segitiga</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <p><strong>Keliling = sisi a + sisi b + sisi c</strong></p>
-                                    <p><strong>Luas = ½ × alas × tinggi</strong></p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="w-0 h-0 border-l-12 border-r-12 border-b-16 border-l-transparent border-r-transparent border-b-yellow-200 mx-auto" style="border-left: 24px solid transparent; border-right: 24px solid transparent; border-bottom: 32px solid #fef3c7;"></div>
-                                    <p class="text-sm mt-2">Segitiga</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-purple-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-purple-700 mb-4">⭕ Lingkaran</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <p><strong>Keliling = 2 × π × r</strong></p>
-                                    <p><strong>Luas = π × r²</strong></p>
-                                    <p class="text-sm">π ≈ 3,14 atau 22/7</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="w-20 h-20 bg-purple-200 border-2 border-purple-400 rounded-full mx-auto"></div>
-                                    <p class="text-sm mt-2">Lingkaran</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                contoh: `
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">💡 Contoh Soal Bangun Datar</h2>
-                    <div class="space-y-6">
-                        <div class="bg-yellow-50 p-6 rounded-2xl border-l-4 border-yellow-400">
-                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">Soal 1: Persegi</h3>
-                            <p class="text-xl mb-4">Sebuah persegi memiliki sisi 8 cm. Hitunglah keliling dan luasnya!</p>
-                            <div class="bg-white p-4 rounded-xl">
-                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
-                                <p>Diketahui: sisi = 8 cm</p>
-                                <p><strong>Keliling:</strong></p>
-                                <p>K = 4 × sisi = 4 × 8 = 32 cm</p>
-                                <p><strong>Luas:</strong></p>
-                                <p>L = sisi × sisi = 8 × 8 = 64 cm²</p>
-                                <p class="text-green-600 font-bold mt-4">Jawaban: Keliling = 32 cm, Luas = 64 cm²</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-400">
-                            <h3 class="text-2xl font-bold text-blue-700 mb-4">Soal 2: Persegi Panjang</h3>
-                            <p class="text-xl mb-4">Sebuah persegi panjang memiliki panjang 12 cm dan lebar 8 cm. Hitunglah keliling dan luasnya!</p>
-                            <div class="bg-white p-4 rounded-xl">
-                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
-                                <p>Diketahui: panjang = 12 cm, lebar = 8 cm</p>
-                                <p><strong>Keliling:</strong></p>
-                                <p>K = 2 × (p + l) = 2 × (12 + 8) = 2 × 20 = 40 cm</p>
-                                <p><strong>Luas:</strong></p>
-                                <p>L = p × l = 12 × 8 = 96 cm²</p>
-                                <p class="text-green-600 font-bold mt-4">Jawaban: Keliling = 40 cm, Luas = 96 cm²</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-400">
-                            <h3 class="text-2xl font-bold text-green-700 mb-4">Soal 3: Lingkaran</h3>
-                            <p class="text-xl mb-4">Sebuah lingkaran memiliki jari-jari 7 cm. Hitunglah keliling dan luasnya! (π = 22/7)</p>
-                            <div class="bg-white p-4 rounded-xl">
-                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
-                                <p>Diketahui: r = 7 cm, π = 22/7</p>
-                                <p><strong>Keliling:</strong></p>
-                                <p>K = 2 × π × r = 2 × 22/7 × 7 = 44 cm</p>
-                                <p><strong>Luas:</strong></p>
-                                <p>L = π × r² = 22/7 × 7² = 22/7 × 49 = 154 cm²</p>
-                                <p class="text-green-600 font-bold mt-4">Jawaban: Keliling = 44 cm, Luas = 154 cm²</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                questions: [
-                    {
-                        question: "Keliling persegi dengan sisi 6 cm adalah...",
-                        options: ["12 cm", "18 cm", "24 cm", "36 cm"],
-                        correct: 2
-                    },
-                    {
-                        question: "Luas persegi panjang dengan panjang 10 cm dan lebar 6 cm adalah...",
-                        options: ["32 cm²", "60 cm²", "16 cm²", "100 cm²"],
-                        correct: 1
-                    },
-                    {
-                        question: "Keliling persegi panjang dengan panjang 8 cm dan lebar 5 cm adalah...",
-                        options: ["13 cm", "26 cm", "40 cm", "80 cm"],
-                        correct: 1
-                    },
-                    {
-                        question: "Luas segitiga dengan alas 12 cm dan tinggi 8 cm adalah...",
-                        options: ["48 cm²", "96 cm²", "20 cm²", "24 cm²"],
-                        correct: 0
-                    },
-                    {
-                        question: "Keliling lingkaran dengan jari-jari 14 cm (π = 22/7) adalah...",
-                        options: ["44 cm", "88 cm", "176 cm", "616 cm"],
-                        correct: 1
-                    },
-                    {
-                        question: "Luas persegi dengan keliling 20 cm adalah...",
-                        options: ["25 cm²", "100 cm²", "20 cm²", "400 cm²"],
-                        correct: 0
-                    },
-                    {
-                        question: "Jika luas persegi panjang 72 cm² dan panjangnya 9 cm, maka lebarnya adalah...",
-                        options: ["6 cm", "7 cm", "8 cm", "9 cm"],
-                        correct: 2
-                    },
-                    {
-                        question: "Luas lingkaran dengan diameter 14 cm (π = 22/7) adalah...",
-                        options: ["154 cm²", "308 cm²", "44 cm²", "88 cm²"],
-                        correct: 0
-                    },
-                    {
-                        question: "Keliling segitiga sama sisi dengan panjang sisi 7 cm adalah...",
-                        options: ["14 cm", "21 cm", "28 cm", "49 cm"],
-                        correct: 1
-                    },
-                    {
-                        question: "Jika keliling persegi 32 cm, maka luasnya adalah...",
-                        options: ["64 cm²", "128 cm²", "256 cm²", "32 cm²"],
-                        correct: 0
-                    }
-                ]
+            {
+                question: "Saat melompat, kita menggunakan...",
+                options: ["Satu kaki saja", "Kedua kaki bersamaan", "Bergantian kaki", "Tidak menggunakan kaki"],
+                correct: 1
+            },
+            {
+                question: "Permainan engklek menggunakan gerakan...",
+                options: ["Berjalan", "Berlari", "Melompat", "Meloncat"],
+                correct: 3
+            },
+            {
+                question: "Manfaat gerak lokomotor untuk jantung adalah...",
+                options: ["Membuat jantung lemah", "Membuat jantung sehat dan kuat", "Tidak ada pengaruh", "Membuat jantung sakit"],
+                correct: 1
+            },
+            {
+                question: "Posisi badan yang benar saat berjalan adalah...",
+                options: ["Membungkuk", "Tegak dan pandangan ke depan", "Miring ke samping", "Menunduk"],
+                correct: 1
+            },
+            {
+                question: "Saat berlari, sebaiknya kita mendarat dengan...",
+                options: ["Tumit terlebih dahulu", "Ujung kaki terlebih dahulu", "Seluruh telapak kaki", "Bagian samping kaki"],
+                correct: 1
+            },
+            {
+                question: "Gerakan lokomotor yang paling dasar adalah...",
+                options: ["Berlari", "Berjalan", "Melompat", "Meloncat"],
+                correct: 1
+            },
+            {
+                question: "Sebelum melompat, yang harus kita lakukan adalah...",
+                options: ["Langsung melompat", "Tekuk lutut terlebih dahulu", "Angkat tangan", "Tutup mata"],
+                correct: 1
+            },
+            {
+                question: "Permainan yang melatih gerakan berlari adalah...",
+                options: ["Engklek", "Kejar-kejaran", "Lompat tali", "Jalan jinjit"],
+                correct: 1
             }
-        };
+        ];
 
-        function showMainMenu() {
-            document.getElementById('mainMenu').classList.remove('hidden');
-            document.getElementById('topicContent').classList.add('hidden');
-            currentTopic = '';
-            currentSection = '';
-        }
-
-        function showTopic(topic) {
-            currentTopic = topic;
-            document.getElementById('mainMenu').classList.add('hidden');
-            document.getElementById('topicContent').classList.remove('hidden');
-            showSection('materi');
-        }
-
-        function showSection(section) {
-            currentSection = section;
-            const contentArea = document.getElementById('contentArea');
+        function showContent(contentType) {
+            // Hide menu
+            document.getElementById('menu-section').style.display = 'none';
             
-            // Update button styles
-            document.querySelectorAll('#topicContent button').forEach(btn => {
-                btn.classList.remove('ring-4', 'ring-white');
+            // Hide all content areas
+            const contentAreas = document.querySelectorAll('.content-area');
+            contentAreas.forEach(area => {
+                area.classList.remove('active');
             });
-            document.getElementById(section + 'Btn').classList.add('ring-4', 'ring-white');
             
-            if (section === 'latihan') {
-                showStudentForm();
-                return;
-            }
+            // Show selected content
+            document.getElementById(contentType + '-content').classList.add('active');
             
-            if (section === 'kesimpulan') {
-                showKesimpulan();
-                return;
-            }
-            
-            contentArea.innerHTML = topics[currentTopic][section];
+            // Update menu card active state
+            const menuCards = document.querySelectorAll('.menu-card');
+            menuCards.forEach(card => card.classList.remove('active'));
         }
 
-        function showKesimpulan() {
-            const topic = topics[currentTopic];
-            const contentArea = document.getElementById('contentArea');
+        function showMenu() {
+            // Show menu
+            document.getElementById('menu-section').style.display = 'block';
             
-            let kesimpulanContent = '';
+            // Hide all content areas
+            const contentAreas = document.querySelectorAll('.content-area');
+            contentAreas.forEach(area => {
+                area.classList.remove('active');
+            });
             
-            if (currentTopic === 'pecahan') {
-                kesimpulanContent = `
-                    <h2 class="text-3xl font-bold text-red-600 mb-6">🎯 Kesimpulan Operasi Hitung Pecahan</h2>
-                    <div class="space-y-6">
-                        <div class="bg-red-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-red-700 mb-4">📝 Rangkuman</h3>
-                            <ul class="space-y-2 text-lg">
-                                <li>✅ Pecahan menunjukkan bagian dari keseluruhan</li>
-                                <li>✅ Penjumlahan/pengurangan: samakan penyebut dulu</li>
-                                <li>✅ Perkalian: kalikan pembilang dengan pembilang, penyebut dengan penyebut</li>
-                                <li>✅ Pembagian: kalikan dengan kebalikan pecahan pembagi</li>
-                                <li>✅ Selalu sederhanakan hasil akhir</li>
-                            </ul>
-                        </div>
-                `;
-            } else if (currentTopic === 'perbandingan') {
-                kesimpulanContent = `
-                    <h2 class="text-3xl font-bold text-green-600 mb-6">🎯 Kesimpulan Perbandingan</h2>
-                    <div class="space-y-6">
-                        <div class="bg-green-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-green-700 mb-4">📝 Rangkuman</h3>
-                            <ul class="space-y-2 text-lg">
-                                <li>✅ Perbandingan membandingkan dua besaran sejenis</li>
-                                <li>✅ Perbandingan senilai: satu naik, yang lain naik</li>
-                                <li>✅ Perbandingan berbalik nilai: satu naik, yang lain turun</li>
-                                <li>✅ Skala menunjukkan perbandingan jarak peta dengan jarak sebenarnya</li>
-                                <li>✅ Sederhanakan perbandingan dengan FPB</li>
-                            </ul>
-                        </div>
-                `;
-            } else if (currentTopic === 'bangun') {
-                kesimpulanContent = `
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">🎯 Kesimpulan Luas dan Keliling</h2>
-                    <div class="space-y-6">
-                        <div class="bg-blue-50 p-6 rounded-2xl">
-                            <h3 class="text-2xl font-bold text-blue-700 mb-4">📝 Rangkuman</h3>
-                            <ul class="space-y-2 text-lg">
-                                <li>✅ Keliling = jumlah panjang semua sisi</li>
-                                <li>✅ Luas = besar daerah yang dibatasi sisi-sisi</li>
-                                <li>✅ Setiap bangun datar punya rumus keliling dan luas sendiri</li>
-                                <li>✅ Satuan keliling: cm, m, km</li>
-                                <li>✅ Satuan luas: cm², m², km²</li>
-                            </ul>
-                        </div>
-                `;
-            }
-            
-            kesimpulanContent += `
-                        <div class="bg-gradient-to-r from-purple-400 to-pink-400 p-6 rounded-2xl text-white text-center">
-                            <h3 class="text-2xl font-bold mb-4">🌟 Motivasi Belajar</h3>
-                            <div class="space-y-3 text-lg">
-                                <p>"Matematika adalah bahasa alam semesta. Dengan belajar matematika, kamu bisa memahami dunia dengan lebih baik!"</p>
-                                <p class="font-bold">💪 Terus berlatih dan jangan takut salah!</p>
-                                <p class="font-bold">🎯 Setiap kesalahan adalah langkah menuju kesuksesan!</p>
-                                <p class="font-bold">⭐ Kamu pasti bisa menguasai matematika!</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-yellow-50 p-6 rounded-2xl text-center">
-                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">🏆 Tips Sukses Belajar Matematika</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
-                                <div class="bg-white p-4 rounded-xl">
-                                    <span class="text-3xl">📚</span>
-                                    <p class="font-bold mt-2">Rajin Berlatih</p>
-                                    <p class="text-sm">Kerjakan soal setiap hari</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-xl">
-                                    <span class="text-3xl">🤔</span>
-                                    <p class="font-bold mt-2">Pahami Konsep</p>
-                                    <p class="text-sm">Jangan hanya menghafal rumus</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-xl">
-                                    <span class="text-3xl">❓</span>
-                                    <p class="font-bold mt-2">Berani Bertanya</p>
-                                    <p class="text-sm">Tanya jika ada yang tidak paham</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-xl">
-                                    <span class="text-3xl">👥</span>
-                                    <p class="font-bold mt-2">Belajar Bersama</p>
-                                    <p class="text-sm">Diskusi dengan teman</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            
-            contentArea.innerHTML = kesimpulanContent;
-        }
-
-        function showStudentForm() {
-            document.getElementById('studentForm').classList.remove('hidden');
-        }
-
-        function closeStudentForm() {
-            document.getElementById('studentForm').classList.add('hidden');
+            // Reset quiz if needed
+            document.getElementById('student-form').style.display = 'block';
+            document.getElementById('quiz-container').classList.remove('active');
+            document.getElementById('score-display').classList.remove('show');
         }
 
         function startQuiz() {
-            studentName = document.getElementById('studentName').value.trim();
-            studentClass = document.getElementById('studentClass').value;
+            const name = document.getElementById('student-name').value.trim();
+            const classValue = document.getElementById('student-class').value;
             
-            if (!studentName) {
-                alert('Silakan masukkan nama terlebih dahulu!');
+            if (!name || !classValue) {
+                // Create custom modal instead of alert
+                showCustomAlert('Mohon isi nama dan pilih kelas terlebih dahulu! 😊');
                 return;
             }
             
-            closeStudentForm();
+            studentName = name;
+            studentClass = classValue;
+            
+            // Hide form and show quiz
+            document.getElementById('student-form').style.display = 'none';
+            document.getElementById('quiz-container').classList.add('active');
             
             // Shuffle questions
-            quizQuestions = [...topics[currentTopic].questions].sort(() => Math.random() - 0.5);
-            currentQuestionIndex = 0;
-            score = 0;
+            currentQuestions = [...questions].sort(() => Math.random() - 0.5);
             
-            showQuizQuestion();
+            generateQuiz();
         }
 
-        function showQuizQuestion() {
-            const contentArea = document.getElementById('contentArea');
-            const question = quizQuestions[currentQuestionIndex];
-            const questionNumber = currentQuestionIndex + 1;
-            const totalQuestions = quizQuestions.length;
+        function showCustomAlert(message) {
+            // Create a custom alert modal
+            const alertDiv = document.createElement('div');
+            alertDiv.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, #FFE4E1, #F0FFFF);
+                padding: 25px;
+                border-radius: 20px;
+                border: 3px solid #FF69B4;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 1000;
+                text-align: center;
+                font-family: Calibri, sans-serif;
+                font-size: 1.2em;
+                color: #333;
+                max-width: 400px;
+            `;
+            alertDiv.innerHTML = `
+                <p>${message}</p>
+                <button onclick="this.parentElement.remove()" style="
+                    background: linear-gradient(45deg, #FF69B4, #00CED1);
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    font-size: 1.1em;
+                    margin-top: 10px;
+                ">OK</button>
+            `;
+            document.body.appendChild(alertDiv);
+        }
+
+        function generateQuiz() {
+            const container = document.getElementById('quiz-questions');
+            container.innerHTML = '';
             
-            contentArea.innerHTML = `
-                <div class="text-center mb-6">
-                    <h2 class="text-3xl font-bold text-purple-600 mb-2">✏️ Latihan Soal</h2>
-                    <p class="text-xl text-gray-600">Soal ${questionNumber} dari ${totalQuestions}</p>
-                    <div class="bg-purple-200 rounded-full h-4 mt-4">
-                        <div class="bg-purple-600 h-4 rounded-full transition-all duration-300" style="width: ${(questionNumber/totalQuestions)*100}%"></div>
-                    </div>
-                </div>
+            currentQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-card';
                 
-                <div class="bg-purple-50 p-6 rounded-2xl mb-6">
-                    <h3 class="text-2xl font-bold text-purple-700 mb-4">Pertanyaan:</h3>
-                    <p class="text-xl mb-6">${question.question}</p>
-                    
-                    <div class="space-y-3">
-                        ${question.options.map((option, index) => `
-                            <button onclick="selectAnswer(${index})" class="w-full text-left p-4 bg-white hover:bg-purple-100 border-2 border-purple-200 hover:border-purple-400 rounded-xl text-lg transition-all duration-300 transform hover:scale-105">
-                                <span class="font-bold text-purple-600">${String.fromCharCode(65 + index)}.</span> ${option}
-                            </button>
+                // Shuffle options
+                const shuffledOptions = q.options.map((option, i) => ({option, originalIndex: i}))
+                    .sort(() => Math.random() - 0.5);
+                
+                questionDiv.innerHTML = `
+                    <div>
+                        <span class="question-number">${index + 1}</span>
+                        <span class="question-text">${q.question}</span>
+                    </div>
+                    <div class="options">
+                        ${shuffledOptions.map((item, i) => `
+                            <label class="option">
+                                <input type="radio" name="q${index}" value="${item.originalIndex}">
+                                ${String.fromCharCode(97 + i)}) ${item.option}
+                            </label>
                         `).join('')}
                     </div>
-                </div>
+                `;
                 
-                <div class="text-center">
-                    <p class="text-lg text-gray-600">Nama: <span class="font-bold text-purple-600">${studentName}</span> | Kelas: <span class="font-bold text-purple-600">${studentClass}</span></p>
-                </div>
-            `;
+                container.appendChild(questionDiv);
+            });
         }
 
-        function selectAnswer(selectedIndex) {
-            const question = quizQuestions[currentQuestionIndex];
-            const isCorrect = selectedIndex === question.correct;
+        function submitQuiz() {
+            let score = 0;
+            const totalQuestions = currentQuestions.length;
             
-            if (isCorrect) {
-                score += 10;
-            }
-            
-            // Show feedback
-            const buttons = document.querySelectorAll('#contentArea button');
-            buttons.forEach((btn, index) => {
-                btn.disabled = true;
-                if (index === question.correct) {
-                    btn.classList.add('bg-green-500', 'text-white', 'border-green-500');
-                } else if (index === selectedIndex && !isCorrect) {
-                    btn.classList.add('bg-red-500', 'text-white', 'border-red-500');
+            // Collect answers
+            currentQuestions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selectedOption && parseInt(selectedOption.value) === q.correct) {
+                    score++;
                 }
             });
             
-            setTimeout(() => {
-                currentQuestionIndex++;
-                if (currentQuestionIndex < quizQuestions.length) {
-                    showQuizQuestion();
-                } else {
-                    showQuizResults();
-                }
-            }, 1500);
-        }
-
-        function showQuizResults() {
-            const percentage = (score / (quizQuestions.length * 10)) * 100;
-            let resultIcon, resultMessage, resultColor;
+            const percentage = Math.round((score / totalQuestions) * 100);
             
-            if (percentage >= 80) {
-                resultIcon = '🏆';
-                resultMessage = 'Luar Biasa!';
-                resultColor = 'text-yellow-500';
+            // Display score
+            const scoreDisplay = document.getElementById('score-display');
+            const scoreText = document.getElementById('score-text');
+            
+            let grade = '';
+            let emoji = '';
+            let message = '';
+            
+            if (percentage >= 90) {
+                grade = 'Luar Biasa!';
+                emoji = '🌟';
+                message = 'Kamu adalah bintang yang bersinar terang!';
+            } else if (percentage >= 80) {
+                grade = 'Sangat Baik!';
+                emoji = '🏆';
+                message = 'Prestasi yang membanggakan!';
+            } else if (percentage >= 70) {
+                grade = 'Baik!';
+                emoji = '👍';
+                message = 'Terus semangat belajar!';
             } else if (percentage >= 60) {
-                resultIcon = '🎉';
-                resultMessage = 'Bagus Sekali!';
-                resultColor = 'text-green-500';
-            } else if (percentage >= 40) {
-                resultIcon = '👍';
-                resultMessage = 'Cukup Baik!';
-                resultColor = 'text-blue-500';
+                grade = 'Cukup Baik!';
+                emoji = '👌';
+                message = 'Sedikit lagi pasti lebih baik!';
             } else {
-                resultIcon = '💪';
-                resultMessage = 'Terus Berlatih!';
-                resultColor = 'text-orange-500';
+                grade = 'Ayo Semangat!';
+                emoji = '💪';
+                message = 'Jangan menyerah, terus berlatih!';
             }
             
-            document.getElementById('resultIcon').textContent = resultIcon;
-            document.getElementById('resultContent').innerHTML = `
-                <p class="text-2xl font-bold ${resultColor} mb-2">${resultMessage}</p>
-                <p class="text-lg mb-2">Nama: <span class="font-bold">${studentName}</span></p>
-                <p class="text-lg mb-2">Kelas: <span class="font-bold">${studentClass}</span></p>
-                <p class="text-lg mb-2">Skor: <span class="font-bold text-purple-600">${score} / ${quizQuestions.length * 10}</span></p>
-                <p class="text-lg">Nilai: <span class="font-bold text-purple-600">${percentage.toFixed(0)}%</span></p>
+            scoreText.innerHTML = `
+                <div style="font-size: 1.3em; margin-bottom: 15px;">${emoji} Hasil Petualangan Soal ${emoji}</div>
+                <div style="margin-bottom: 10px;">Nama: <strong>${studentName}</strong></div>
+                <div style="margin-bottom: 15px;">Kelas: <strong>${studentClass}</strong></div>
+                <div style="margin: 20px 0;">
+                    <div style="font-size: 2em; margin-bottom: 5px;">Nilai: <strong>${percentage}</strong></div>
+                    <div style="font-size: 1.1em;">Benar: ${score} dari ${totalQuestions} soal</div>
+                </div>
+                <div style="font-size: 1.4em; margin-bottom: 10px;">Predikat: <strong>${grade}</strong></div>
+                <div style="font-size: 1.2em; font-style: italic;">${message}</div>
             `;
             
-            document.getElementById('quizResults').classList.remove('hidden');
-        }
-
-        function closeResults() {
-            document.getElementById('quizResults').classList.add('hidden');
-            showSection('kesimpulan');
+            scoreDisplay.classList.add('show');
+            
+            // Scroll to score
+            scoreDisplay.scrollIntoView({ behavior: 'smooth' });
         }
 
         // Initialize
-        showMainMenu();
+        document.addEventListener('DOMContentLoaded', function() {
+            showMenu();
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e922a58504a03b',t:'MTc2MDQ2NjQ5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e971abb1c0a03b',t:'MTc2MDQ2OTczMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
