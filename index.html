@@ -3,1386 +3,892 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Pembelajaran PJOK - Pencak Silat </title>
+    <title>Matematika Kelas 6 - Pak Chandra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a8edea 100%);
-            min-height: 100%;
         }
-
-        .header {
-            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
+        
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+        
+        * {
+            font-family: 'Comic Neue', cursive;
         }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(255,255,255,0.1) 10px,
-                rgba(255,255,255,0.1) 20px
-            );
-            animation: headerPattern 20s linear infinite;
-        }
-
-        @keyframes headerPattern {
-            0% { transform: translateX(-50px) translateY(-50px); }
-            100% { transform: translateX(0px) translateY(0px); }
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 3.2em;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
-            position: relative;
-            z-index: 2;
-        }
-
-        .header p {
-            margin: 15px 0 0 0;
-            font-size: 1.5em;
-            opacity: 0.95;
-            position: relative;
-            z-index: 2;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 25px;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .menu-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-            border-radius: 25px;
-            padding: 35px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 4px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-            transition: left 0.5s;
-        }
-
-        .menu-card:hover::before {
-            left: 100%;
-        }
-
-        .menu-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-            border-color: #667eea;
-        }
-
-        .menu-card h3 {
-            color: #333;
-            font-size: 1.7em;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .menu-card .icon {
-            font-size: 4.5em;
-            margin-bottom: 20px;
-            animation: iconBounce 2s ease-in-out infinite;
-            position: relative;
-            z-index: 2;
-        }
-
-        @keyframes iconBounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-8px); }
-        }
-
-        .content-section {
-            display: none;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-            border-radius: 25px;
-            padding: 35px;
-            margin: 25px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .content-section.active {
-            display: block;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .back-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin-bottom: 25px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
-        }
-
-        .back-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(255,107,107,0.6);
-        }
-
-        .definition-container {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 25px 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .definition-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .definition-header h3 {
-            font-size: 2.2em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .definition-animation {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
-            animation: defFloat 3s ease-in-out infinite;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        @keyframes defFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-        }
-
-        .definition-text {
-            background: rgba(255,255,255,0.9);
-            padding: 25px;
-            border-radius: 15px;
-            font-size: 1.3em;
-            line-height: 1.8;
-            color: #333;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .definition-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        .step-container {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 25px 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .step-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .step-header h3 {
-            font-size: 2.2em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .step-animation {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
-            animation: stepFloat 3s ease-in-out infinite;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        @keyframes stepFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-
-        .step-card {
+        
+        .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(102,126,234,0.4);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
-
-        .step-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-            animation: shimmer 4s ease-in-out infinite;
+        
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-
-        @keyframes shimmer {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
+        
+        .bounce {
+            animation: bounce 2s infinite;
         }
-
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(102,126,234,0.6);
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
-
-        .step-number {
-            background: rgba(255,255,255,0.2);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            font-weight: bold;
-            margin: 0 auto 15px;
-            position: relative;
-            z-index: 2;
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
         }
-
-        .step-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .step-description {
-            font-size: 1.1em;
-            line-height: 1.6;
-            position: relative;
-            z-index: 2;
-        }
-
-        .form-container {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 25px 0;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .form-group {
-            margin: 20px 0;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .form-group input, .form-group select {
-            padding: 15px;
-            font-size: 1.2em;
-            border: 3px solid #ddd;
-            border-radius: 15px;
-            width: 250px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 15px rgba(102,126,234,0.3);
-            outline: none;
-        }
-
-        .start-btn {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
-            border: none;
-            padding: 18px 35px;
-            font-size: 1.3em;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(76,175,80,0.4);
-        }
-
-        .start-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(76,175,80,0.6);
-        }
-
-        .quiz-container {
-            text-align: center;
-        }
-
-        .question-card {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 25px 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .question-number {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-
-        .option-btn {
-            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
-            border: 4px solid #ddd;
-            padding: 18px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        .option-btn:hover {
-            border-color: #667eea;
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
-        }
-
-        .option-btn.correct {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
-            border-color: #4CAF50;
-            animation: correctPulse 0.5s ease-out;
-        }
-
-        .option-btn.incorrect {
-            background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
-            color: white;
-            border-color: #f44336;
-            animation: shake 0.5s ease-out;
-        }
-
-        @keyframes correctPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        .score-display {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 25px 0;
-            font-size: 1.4em;
-            box-shadow: 0 8px 25px rgba(102,126,234,0.4);
-        }
-
-        .next-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
-        }
-
-        .next-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(102,126,234,0.6);
-        }
-
-        .example-container {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .conclusion-container {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .motivation-text {
-            font-size: 1.4em;
-            color: #333;
-            line-height: 1.7;
-            margin: 25px 0;
-        }
-
-        .star-animation {
-            font-size: 2.5em;
-            animation: sparkle 2s infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            25% { transform: scale(1.2) rotate(90deg); }
-            50% { transform: scale(1) rotate(180deg); }
-            75% { transform: scale(1.2) rotate(270deg); }
-        }
-
-        .moving-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .floating-shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: floatAround 15s ease-in-out infinite;
-        }
-
-        @keyframes floatAround {
-            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-            25% { transform: translateY(-20px) translateX(20px) rotate(90deg); }
-            50% { transform: translateY(-40px) translateX(-20px) rotate(180deg); }
-            75% { transform: translateY(-20px) translateX(-40px) rotate(270deg); }
-        }
-
-        .stimulus-box {
-            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border-left: 5px solid #667eea;
-        }
-
-        .stimulus-box h4 {
-            font-size: 1.2em;
-            margin: 0 0 10px 0;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .stimulus-box p {
-            font-size: 1.1em;
-            margin: 0;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .technique-section {
-            margin: 40px 0;
-        }
-
-        .technique-title {
-            text-align: center;
-            color: #667eea;
-            font-size: 2.2em;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
     </style>
 </head>
-<body>
-    <div class="moving-bg">
-        <div class="floating-shape" style="top: 10%; left: 10%; font-size: 3em;">🥋</div>
-        <div class="floating-shape" style="top: 20%; right: 10%; font-size: 2.5em; animation-delay: -2s;">👊</div>
-        <div class="floating-shape" style="bottom: 20%; left: 15%; font-size: 2em; animation-delay: -4s;">🦵</div>
-        <div class="floating-shape" style="bottom: 10%; right: 20%; font-size: 3.5em; animation-delay: -6s;">⭐</div>
-    </div>
-
-    <div class="header">
-        <h1>🥋 WILLYBOJAN 🥋</h1>
-        <p>Media Pembelajaran PJOK - Aktivitas Bela Diri Pencak Silat</p>
-        <p style="font-size: 1.2em; margin-top: 10px;">✨ Teknik Serangan Pencak Silat untuk SD ✨</p>
-    </div>
-
-    <div class="container">
-        <!-- Menu Utama -->
-        <div id="main-menu">
-            <div class="menu-grid">
-                <div class="menu-card" onclick="showSection('pengertian')">
-                    <div class="icon">📖</div>
-                    <h3>Pengertian Teknik</h3>
-                    <p>Pelajari pengertian pukulan atas, samping, depan dan tendangan dalam Pencak Silat</p>
-                </div>
-                <div class="menu-card" onclick="showSection('materi')">
-                    <div class="icon">📚</div>
-                    <h3>Step-by-Step Gerakan</h3>
-                    <p>Pelajari langkah demi langkah gerakan pukulan dan tendangan Pencak Silat dengan mudah!</p>
-                </div>
-                <div class="menu-card" onclick="showSection('contoh')">
-                    <div class="icon">💡</div>
-                    <h3>Contoh Soal</h3>
-                    <p>Lihat contoh soal dan cara penyelesaiannya dengan mudah</p>
-                </div>
-                <div class="menu-card" onclick="showSection('latihan-form')">
-                    <div class="icon">📝</div>
-                    <h3>Latihan Soal</h3>
-                    <p>15 soal pilihan ganda dengan stimulus menarik dan skor otomatis</p>
-                </div>
-                <div class="menu-card" onclick="showSection('kesimpulan')">
-                    <div class="icon">🏆</div>
-                    <h3>Kesimpulan</h3>
-                    <p>Rangkuman materi dan motivasi belajar untuk adik-adik</p>
-                </div>
+<body class="gradient-bg min-h-full">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-5xl font-bold text-white mb-4 bounce">🎓 Matematika Kelas 6 🎓</h1>
+            <p class="text-2xl text-yellow-200 font-bold">by Pak Chandra</p>
+            <div class="flex justify-center mt-4 space-x-4">
+                <span class="text-6xl float">📐</span>
+                <span class="text-6xl float" style="animation-delay: 0.5s;">📊</span>
+                <span class="text-6xl float" style="animation-delay: 1s;">🔢</span>
             </div>
         </div>
 
-        <!-- Pengertian Teknik -->
-        <div id="pengertian" class="content-section">
-            <button class="back-btn" onclick="showMainMenu()">← Kembali ke Menu</button>
-            <h2 style="text-align: center; color: #333; font-size: 2.5em;">📖 Pengertian Teknik Serangan Pencak Silat</h2>
-            <p style="text-align: center; font-size: 1.4em; color: #666; margin-bottom: 40px;">Mari mengenal pengertian setiap teknik serangan dalam pencak silat!</p>
+        <!-- Main Menu -->
+        <div id="mainMenu" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-red-400 hover:bg-red-500 rounded-3xl p-6 card-shadow cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="showTopic('pecahan')">
+                <div class="text-center text-white">
+                    <div class="text-6xl mb-4">🍰</div>
+                    <h3 class="text-2xl font-bold mb-2">Operasi Hitung Pecahan</h3>
+                    <p class="text-lg">Belajar penjumlahan, pengurangan, perkalian, dan pembagian pecahan</p>
+                </div>
+            </div>
             
-            <!-- Teknik Pukulan -->
-            <div class="technique-section">
-                <h3 class="technique-title">👊 PENGERTIAN TEKNIK PUKULAN</h3>
-                
-                <div class="definition-grid">
-                    <!-- Pukulan Atas -->
-                    <div class="definition-container">
-                        <div class="definition-header">
-                            <div class="definition-animation">🔨</div>
-                            <h3>Pukulan Atas</h3>
-                        </div>
-                        <div class="definition-text">
-                            <strong>🔨 Pukulan Atas</strong> adalah teknik serangan dalam pencak silat yang dilakukan dengan mengayunkan tangan dari atas kepala ke bawah menuju target. Gerakan ini mirip seperti memukul paku dengan palu. Pukulan ini efektif untuk menyerang bagian kepala, bahu, atau punggung lawan.
-                        </div>
-                    </div>
-
-                    <!-- Pukulan Samping -->
-                    <div class="definition-container">
-                        <div class="definition-header">
-                            <div class="definition-animation">🤜</div>
-                            <h3>Pukulan Samping</h3>
-                        </div>
-                        <div class="definition-text">
-                            <strong>🤜 Pukulan Samping</strong> adalah teknik serangan yang dilakukan dengan mengayunkan tangan secara horizontal dari samping tubuh. Kekuatan pukulan ini berasal dari putaran pinggul dan badan. Target utamanya adalah bagian rusuk, pinggang, atau samping tubuh lawan.
-                        </div>
-                    </div>
-
-                    <!-- Pukulan Depan -->
-                    <div class="definition-container">
-                        <div class="definition-header">
-                            <div class="definition-animation">👊</div>
-                            <h3>Pukulan Depan</h3>
-                        </div>
-                        <div class="definition-text">
-                            <strong>👊 Pukulan Depan</strong> adalah teknik serangan yang dilakukan dengan mendorong tangan lurus ke depan menuju target. Gerakan ini seperti mendorong pintu dengan kuat. Pukulan ini cepat dan langsung mengarah ke dada, perut, atau wajah lawan.
-                        </div>
-                    </div>
+            <div class="bg-green-400 hover:bg-green-500 rounded-3xl p-6 card-shadow cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="showTopic('perbandingan')">
+                <div class="text-center text-white">
+                    <div class="text-6xl mb-4">⚖️</div>
+                    <h3 class="text-2xl font-bold mb-2">Perbandingan</h3>
+                    <p class="text-lg">Memahami konsep perbandingan dan skala</p>
                 </div>
             </div>
-
-            <!-- Teknik Tendangan -->
-            <div class="technique-section">
-                <h3 class="technique-title">🦵 PENGERTIAN TEKNIK TENDANGAN</h3>
-                
-                <div class="definition-grid">
-                    <!-- Tendangan Depan -->
-                    <div class="definition-container">
-                        <div class="definition-header">
-                            <div class="definition-animation">🦵</div>
-                            <h3>Tendangan Depan</h3>
-                        </div>
-                        <div class="definition-text">
-                            <strong>🦵 Tendangan Depan</strong> adalah teknik serangan menggunakan kaki yang diarahkan lurus ke depan menuju target. Gerakan ini seperti menendang bola ke gawang. Bagian kaki yang digunakan adalah ujung kaki atau telapak kaki untuk mendorong lawan.
-                        </div>
-                    </div>
-
-                    <!-- Tendangan Samping -->
-                    <div class="definition-container">
-                        <div class="definition-header">
-                            <div class="definition-animation">🦶</div>
-                            <h3>Tendangan Samping</h3>
-                        </div>
-                        <div class="definition-text">
-                            <strong>🦶 Tendangan Samping</strong> adalah teknik serangan menggunakan sisi luar kaki yang diarahkan ke samping menuju target. Gerakan ini seperti membuka pintu dengan kaki. Target utamanya adalah rusuk, pinggang, atau samping tubuh lawan.
-                        </div>
-                    </div>
-
-                    <!-- Tendangan Atas -->
-                    <div class="definition-container">
-                        <div class="definition-header">
-                            <div class="definition-animation">🥾</div>
-                            <h3>Tendangan Atas</h3>
-                        </div>
-                        <div class="definition-text">
-                            <strong>🥾 Tendangan Atas</strong> adalah teknik serangan yang dilakukan dengan mengayunkan kaki dari bawah ke atas menuju kepala lawan. Gerakan ini seperti menendang bola tinggi-tinggi ke udara. Membutuhkan kelenturan dan keseimbangan yang baik.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 20px; text-align: center; margin: 40px 0;">
-                <h3 style="font-size: 1.8em; margin-bottom: 20px;">🎯 Ringkasan Pengertian</h3>
-                <div style="font-size: 1.2em; line-height: 1.8;">
-                    <p><strong>👊 Pukulan:</strong> Serangan menggunakan tangan dengan arah atas, samping, atau depan</p>
-                    <p><strong>🦵 Tendangan:</strong> Serangan menggunakan kaki dengan arah depan, samping, atau atas</p>
-                    <p><strong>🎯 Target:</strong> Setiap teknik memiliki target dan cara yang berbeda</p>
-                    <p><strong⚖️ Prinsip:</strong> Keseimbangan, kontrol, dan teknik yang benar adalah kunci utama</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Materi Step-by-Step -->
-        <div id="materi" class="content-section">
-            <button class="back-btn" onclick="showMainMenu()">← Kembali ke Menu</button>
-            <h2 style="text-align: center; color: #333; font-size: 2.5em;">🥋 Step-by-Step Teknik Serangan Pencak Silat</h2>
-            <p style="text-align: center; font-size: 1.4em; color: #666; margin-bottom: 40px;">Mari belajar gerakan-gerakan dasar dengan langkah yang mudah diikuti!</p>
             
-            <!-- Teknik Pukulan -->
-            <div class="technique-section">
-                <h3 class="technique-title">👊 TEKNIK PUKULAN</h3>
-                
-                <!-- Pukulan Atas -->
-                <div class="step-container">
-                    <div class="step-header">
-                        <div class="step-animation">🔨</div>
-                        <h3>Pukulan Atas</h3>
-                        <p style="font-size: 1.2em; color: #666;">Pukulan dari atas ke bawah seperti memukul paku dengan palu</p>
-                    </div>
-                    <div class="steps-grid">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Posisi Awal</div>
-                            <div class="step-description">Berdiri tegak dengan kaki selebar bahu. Tangan kanan diangkat tinggi di atas kepala, siap untuk memukul ke bawah.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Gerakan Pukulan</div>
-                            <div class="step-description">Ayunkan tangan dari atas kepala ke bawah dengan kuat. Seperti memukul paku dengan palu, gerakan lurus dan tegas.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Target & Akhiran</div>
-                            <div class="step-description">Target: kepala atau bahu lawan. Setelah memukul, tarik tangan kembali ke posisi siaga untuk gerakan selanjutnya.</div>
-                        </div>
-                    </div>
+            <div class="bg-blue-400 hover:bg-blue-500 rounded-3xl p-6 card-shadow cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="showTopic('bangun')">
+                <div class="text-center text-white">
+                    <div class="text-6xl mb-4">📐</div>
+                    <h3 class="text-2xl font-bold mb-2">Luas & Keliling Bangun Datar</h3>
+                    <p class="text-lg">Menghitung luas dan keliling berbagai bangun datar</p>
                 </div>
+            </div>
+        </div>
 
-                <!-- Pukulan Samping -->
-                <div class="step-container">
-                    <div class="step-header">
-                        <div class="step-animation">🤜</div>
-                        <h3>Pukulan Samping</h3>
-                        <p style="font-size: 1.2em; color: #666;">Pukulan horizontal dari samping dengan putaran tubuh</p>
-                    </div>
-                    <div class="steps-grid">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Posisi Siap</div>
-                            <div class="step-description">Berdiri dengan kaki kanan sedikit ke depan. Tangan kanan di samping badan, siap untuk memutar dan memukul ke samping.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Putaran Tubuh</div>
-                            <div class="step-description">Putar pinggul dan badan ke kiri sambil mengayunkan tangan kanan ke samping. Kekuatan datang dari putaran pinggul.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Eksekusi Pukulan</div>
-                            <div class="step-description">Target: rusuk atau pinggang lawan. Pukulan horizontal dengan momentum putaran tubuh yang kuat dan cepat.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pukulan Depan -->
-                <div class="step-container">
-                    <div class="step-header">
-                        <div class="step-animation">👊</div>
-                        <h3>Pukulan Depan</h3>
-                        <p style="font-size: 1.2em; color: #666;">Pukulan lurus ke depan yang cepat dan langsung</p>
-                    </div>
-                    <div class="steps-grid">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Sikap Awal</div>
-                            <div class="step-description">Berdiri dengan kaki kanan di depan. Tangan kanan di samping dada, siap untuk mendorong lurus ke depan.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Dorongan Lurus</div>
-                            <div class="step-description">Dorong tangan kanan lurus ke depan dengan cepat. Seperti mendorong pintu dengan kekuatan penuh dan gerakan cepat.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Target & Kembali</div>
-                            <div class="step-description">Target: dada atau perut lawan. Setelah memukul, tarik tangan kembali dengan cepat ke posisi siaga.</div>
-                        </div>
-                    </div>
+        <!-- Topic Content -->
+        <div id="topicContent" class="hidden">
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between mb-6">
+                <button onclick="showMainMenu()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
+                    ← Kembali ke Menu
+                </button>
+                <div class="flex space-x-4">
+                    <button id="materiBtn" onclick="showSection('materi')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
+                        📚 Materi
+                    </button>
+                    <button id="contohBtn" onclick="showSection('contoh')" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
+                        💡 Contoh Soal
+                    </button>
+                    <button id="latihanBtn" onclick="showSection('latihan')" class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
+                        ✏️ Latihan
+                    </button>
+                    <button id="kesimpulanBtn" onclick="showSection('kesimpulan')" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full text-xl font-bold transition-all duration-300">
+                        🎯 Kesimpulan
+                    </button>
                 </div>
             </div>
 
-            <!-- Teknik Tendangan -->
-            <div class="technique-section">
-                <h3 class="technique-title">🦵 TEKNIK TENDANGAN</h3>
-                
-                <!-- Tendangan Depan -->
-                <div class="step-container">
-                    <div class="step-header">
-                        <div class="step-animation">🦵</div>
-                        <h3>Tendangan Depan</h3>
-                        <p style="font-size: 1.2em; color: #666;">Tendangan lurus ke depan seperti menendang bola ke gawang</p>
-                    </div>
-                    <div class="steps-grid">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Posisi Awal</div>
-                            <div class="step-description">Berdiri tegak dengan kaki kiri sebagai tumpuan. Angkat kaki kanan, tekuk lutut, siap untuk menendang lurus ke depan.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Eksekusi Tendangan</div>
-                            <div class="step-description">Luruskan kaki kanan ke depan dengan kuat. Gunakan ujung kaki atau telapak kaki untuk mendorong target.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Target & Kembali</div>
-                            <div class="step-description">Target: perut atau dada lawan. Setelah menendang, tarik kaki kembali dan turunkan ke posisi awal dengan stabil.</div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Content Sections -->
+            <div id="contentArea" class="bg-white rounded-3xl p-8 card-shadow">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
 
-                <!-- Tendangan Samping -->
-                <div class="step-container">
-                    <div class="step-header">
-                        <div class="step-animation">🦶</div>
-                        <h3>Tendangan Samping</h3>
-                        <p style="font-size: 1.2em; color: #666;">Tendangan ke arah samping menggunakan sisi luar kaki</p>
+        <!-- Student Form -->
+        <div id="studentForm" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 card-shadow">
+                <h3 class="text-3xl font-bold text-center mb-6 text-purple-600">📝 Data Siswa</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xl font-bold text-gray-700 mb-2">Nama:</label>
+                        <input type="text" id="studentName" class="w-full px-4 py-3 border-2 border-purple-300 rounded-xl text-lg focus:border-purple-500 focus:outline-none" placeholder="Masukkan nama kamu">
                     </div>
-                    <div class="steps-grid">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Persiapan</div>
-                            <div class="step-description">Berdiri menyamping dengan kaki kiri sebagai tumpuan. Angkat kaki kanan ke samping, tekuk lutut ke arah dada.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Tendangan Samping</div>
-                            <div class="step-description">Luruskan kaki kanan ke samping dengan kuat. Gunakan sisi luar kaki untuk menendang, seperti membuka pintu dengan kaki.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Sasaran & Akhir</div>
-                            <div class="step-description">Target: rusuk atau pinggang lawan. Tarik kaki kembali ke posisi tekuk, lalu turunkan dengan kontrol yang baik.</div>
-                        </div>
+                    <div>
+                        <label class="block text-xl font-bold text-gray-700 mb-2">Kelas:</label>
+                        <select id="studentClass" class="w-full px-4 py-3 border-2 border-purple-300 rounded-xl text-lg focus:border-purple-500 focus:outline-none">
+                            <option value="6">Kelas 6</option>
+                        </select>
                     </div>
-                </div>
-
-                <!-- Tendangan Atas -->
-                <div class="step-container">
-                    <div class="step-header">
-                        <div class="step-animation">🥾</div>
-                        <h3>Tendangan Atas</h3>
-                        <p style="font-size: 1.2em; color: #666;">Tendangan dari bawah ke atas menuju kepala lawan</p>
-                    </div>
-                    <div class="steps-grid">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Sikap Siap</div>
-                            <div class="step-description">Berdiri dengan kaki kiri sebagai tumpuan yang kuat. Kaki kanan di belakang, siap untuk mengayun dari bawah ke atas.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Ayunan Ke Atas</div>
-                            <div class="step-description">Ayunkan kaki kanan dari bawah ke atas dengan kuat. Gerakan seperti menendang bola tinggi-tinggi ke udara.</div>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Target & Kontrol</div>
-                            <div class="step-description">Target: kepala atau dagu lawan. Butuh kelenturan dan keseimbangan. Turunkan kaki dengan kontrol yang baik.</div>
-                        </div>
+                    <div class="flex space-x-4 mt-6">
+                        <button onclick="startQuiz()" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl text-xl font-bold transition-all duration-300">
+                            🚀 Mulai Latihan
+                        </button>
+                        <button onclick="closeStudentForm()" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-xl text-xl font-bold transition-all duration-300">
+                            ❌ Batal
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Contoh Soal -->
-        <div id="contoh" class="content-section">
-            <button class="back-btn" onclick="showMainMenu()">← Kembali ke Menu</button>
-            <h2 style="text-align: center; color: #333; font-size: 2.2em;">💡 Contoh Soal dan Penyelesaian</h2>
-            
-            <div class="example-container">
-                <h3 style="color: #667eea;">📝 Contoh 1: Pengertian Teknik</h3>
-                <div class="stimulus-box">
-                    <h4>📖 Cerita:</h4>
-                    <p>🥋 Guru PJOK menjelaskan: "Anak-anak, ada teknik serangan dalam pencak silat yang dilakukan dengan mengayunkan tangan dari atas kepala ke bawah menuju target, seperti memukul paku dengan palu."</p>
-                </div>
-                <p><strong>❓ Pertanyaan:</strong> Berdasarkan penjelasan guru, teknik yang dimaksud adalah...</p>
-                <p><strong>A.</strong> Pukulan depan</p>
-                <p><strong>B.</strong> Pukulan atas</p>
-                <p><strong>C.</strong> Pukulan samping</p>
-                <p><strong>D.</strong> Tendangan atas</p>
-                <p style="background: #4CAF50; color: white; padding: 10px; border-radius: 10px;"><strong>✅ Jawaban: B. Pukulan atas</strong></p>
-                <p><strong>💭 Penjelasan:</strong> Ciri khas pukulan atas adalah gerakan mengayunkan tangan dari atas kepala ke bawah, seperti memukul paku dengan palu.</p>
-            </div>
-
-            <div class="example-container">
-                <h3 style="color: #667eea;">📝 Contoh 2: Step-by-Step Gerakan</h3>
-                <div class="stimulus-box">
-                    <h4>📖 Cerita:</h4>
-                    <p>🦵 Sari berlatih tendangan dengan langkah: (1) Berdiri tegak dengan kaki kiri sebagai tumpuan, (2) Angkat kaki kanan dan tekuk lutut, (3) Luruskan kaki ke depan dengan kuat menggunakan ujung kaki.</p>
-                </div>
-                <p><strong>❓ Pertanyaan:</strong> Pada langkah ketiga, bagian kaki yang digunakan untuk menendang adalah...</p>
-                <p><strong>A.</strong> Sisi luar kaki</p>
-                <p><strong>B.</strong> Tumit kaki</p>
-                <p><strong>C.</strong> Ujung kaki</p>
-                <p><strong>D.</strong> Punggung kaki</p>
-                <p style="background: #4CAF50; color: white; padding: 10px; border-radius: 10px;"><strong>✅ Jawaban: C. Ujung kaki</strong></p>
-                <p><strong>💭 Penjelasan:</strong> Dalam tendangan depan, bagian kaki yang digunakan adalah ujung kaki atau telapak kaki untuk mendorong target.</p>
-            </div>
-
-            <div class="example-container">
-                <h3 style="color: #667eea;">📝 Contoh 3: Target Serangan</h3>
-                <div class="stimulus-box">
-                    <h4>📖 Cerita:</h4>
-                    <p>👊 Budi berlatih pukulan samping dengan target yang tepat. Pelatih berkata: "Pukulan samping efektif untuk menyerang bagian samping tubuh lawan."</p>
-                </div>
-                <p><strong>❓ Pertanyaan:</strong> Target yang tepat untuk pukulan samping adalah...</p>
-                <p><strong>A.</strong> Kepala atau bahu</p>
-                <p><strong>B.</strong> Dada atau perut</p>
-                <p><strong>C.</strong> Rusuk atau pinggang</p>
-                <p><strong>D.</strong> Kaki atau tangan</p>
-                <p style="background: #4CAF50; color: white; padding: 10px; border-radius: 10px;"><strong>✅ Jawaban: C. Rusuk atau pinggang</strong></p>
-                <p><strong>💭 Penjelasan:</strong> Pukulan samping diarahkan ke bagian samping tubuh lawan, yaitu rusuk atau pinggang.</p>
-            </div>
-        </div>
-
-        <!-- Form Latihan -->
-        <div id="latihan-form" class="content-section">
-            <button class="back-btn" onclick="showMainMenu()">← Kembali ke Menu</button>
-            <h2 style="text-align: center; color: #333; font-size: 2.2em;">📝 Latihan Soal</h2>
-            <div class="form-container">
-                <h3 style="font-size: 1.8em; margin-bottom: 25px;">🎒 Masukkan Data Diri Kamu</h3>
-                <div class="form-group">
-                    <label>👤 Nama Siswa:</label>
-                    <input type="text" id="nama-latihan" placeholder="Tulis nama kamu di sini...">
-                </div>
-                <div class="form-group">
-                    <label>🏫 Kelas:</label>
-                    <select id="kelas-latihan">
-                        <option value="">Pilih Kelas Kamu</option>
-                        <option value="1">Kelas 1</option>
-                        <option value="2">Kelas 2</option>
-                        <option value="3">Kelas 3</option>
-                        <option value="4">Kelas 4</option>
-                        <option value="5">Kelas 5</option>
-                        <option value="6">Kelas 6</option>
-                    </select>
-                </div>
-                <button class="start-btn" onclick="startLatihan()">🚀 Mulai Latihan Sekarang!</button>
-            </div>
-        </div>
-
-        <!-- Latihan Soal -->
-        <div id="latihan" class="content-section">
-            <button class="back-btn" onclick="showMainMenu()">← Kembali ke Menu</button>
-            <div class="quiz-container">
-                <div class="score-display">
-                    <span id="latihan-info"></span> | Soal <span id="latihan-current">1</span> dari 15 | 🏆 Skor: <span id="latihan-score">0</span>
-                </div>
-                <div class="question-card">
-                    <div class="question-number" id="latihan-number">1</div>
-                    <div id="latihan-question" style="font-size: 1.4em; margin: 20px 0;"></div>
-                    <div class="options-grid" id="latihan-options"></div>
-                </div>
-                <button class="next-btn" id="latihan-next" onclick="nextLatihanQuestion()" style="display: none;">➡️ Soal Berikutnya</button>
-                <button class="next-btn" id="latihan-finish" onclick="finishLatihan()" style="display: none;">🎉 Lihat Hasil</button>
-            </div>
-        </div>
-
-        <!-- Kesimpulan -->
-        <div id="kesimpulan" class="content-section">
-            <button class="back-btn" onclick="showMainMenu()">← Kembali ke Menu</button>
-            <div class="conclusion-container">
-                <h2 style="font-size: 2.5em; margin-bottom: 20px;">🏆 Kesimpulan Pembelajaran</h2>
-                <div class="star-animation">⭐ ⭐ ⭐</div>
-                
-                <h3 style="font-size: 2em; margin: 30px 0;">📚 Rangkuman Materi:</h3>
-                
-                <div style="text-align: left; display: inline-block; margin: 30px 0; background: rgba(255,255,255,0.8); padding: 25px; border-radius: 15px;">
-                    <h4 style="color: #667eea; font-size: 1.5em;">📖 Pengertian Teknik:</h4>
-                    <ul style="font-size: 1.2em; line-height: 1.8;">
-                        <li><strong>🔨 Pukulan Atas:</strong> Serangan dari atas ke bawah seperti palu</li>
-                        <li><strong>🤜 Pukulan Samping:</strong> Serangan horizontal dengan putaran tubuh</li>
-                        <li><strong>👊 Pukulan Depan:</strong> Serangan lurus ke depan seperti mendorong</li>
-                        <li><strong>🦵 Tendangan Depan:</strong> Serangan kaki lurus ke depan</li>
-                        <li><strong>🦶 Tendangan Samping:</strong> Serangan kaki ke samping</li>
-                        <li><strong>🥾 Tendangan Atas:</strong> Serangan kaki dari bawah ke atas</li>
-                    </ul>
-
-                    <h4 style="color: #667eea; font-size: 1.5em;">🎯 Step-by-Step:</h4>
-                    <ul style="font-size: 1.2em; line-height: 1.8;">
-                        <li><strong>1️⃣ Posisi Awal:</strong> Sikap dan posisi tubuh yang benar</li>
-                        <li><strong>2️⃣ Gerakan:</strong> Eksekusi teknik dengan tepat</li>
-                        <li><strong>3️⃣ Target & Akhiran:</strong> Sasaran dan kembali ke posisi siaga</li>
-                    </ul>
-                </div>
-
-                <div class="motivation-text">
-                    <h3 style="font-size: 2em; color: #ff6b6b;">💪 Motivasi Belajar</h3>
-                    <p style="background: rgba(255,255,255,0.9); padding: 20px; border-radius: 15px; margin: 20px 0;">"Pencak silat mengajarkan kita tidak hanya teknik bertarung, tetapi juga disiplin, hormat, dan kontrol diri. Setiap gerakan yang dipelajari hari ini adalah langkah menuju karakter yang lebih baik!"</p>
-                    
-                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 20px; margin: 25px 0;">
-                        <p><strong style="font-size: 1.4em;">🌟 Tips Sukses Belajar:</strong></p>
-                        <div style="text-align: left; font-size: 1.2em; line-height: 2;">
-                            <p>✅ Pahami pengertian setiap teknik dengan baik</p>
-                            <p>✅ Ikuti step-by-step dengan teliti dan sabar</p>
-                            <p>✅ Berlatih gerakan dasar secara rutin</p>
-                            <p>✅ Selalu ingat target dan tujuan setiap teknik</p>
-                            <p>✅ Jaga keseimbangan dan kontrol tubuh</p>
-                            <p>✅ Hormati lawan dan gunakan untuk kebaikan</p>
-                        </div>
-                    </div>
-                    
-                    <div class="star-animation" style="font-size: 2em; margin: 30px 0;">🥋 Semangat Berlatih! 🇮🇩</div>
-                    <p style="font-size: 1.3em; color: #667eea; font-weight: bold;">Dari pengertian menuju penguasaan teknik yang sempurna! 🌟</p>
-                </div>
+        <!-- Quiz Results -->
+        <div id="quizResults" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 card-shadow text-center">
+                <div id="resultIcon" class="text-8xl mb-4"></div>
+                <h3 class="text-3xl font-bold mb-4 text-purple-600">Hasil Latihan</h3>
+                <div id="resultContent" class="text-xl mb-6"></div>
+                <button onclick="closeResults()" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-xl text-xl font-bold transition-all duration-300">
+                    👍 OK
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // Data soal latihan (15 soal dengan stimulus)
-        const latihanSoal = [
-            {
-                stimulus: "🥋 Guru menjelaskan: 'Teknik serangan yang dilakukan dengan mengayunkan tangan dari atas kepala ke bawah menuju target, seperti memukul paku dengan palu.'",
-                question: "Berdasarkan penjelasan guru, teknik yang dimaksud adalah...",
-                options: ["Pukulan depan", "Pukulan atas", "Pukulan samping", "Tendangan atas"],
-                correct: 1
-            },
-            {
-                stimulus: "🦵 Sari berlatih tendangan: (1) Berdiri tegak dengan kaki kiri sebagai tumpuan, (2) Angkat kaki kanan dan tekuk lutut, (3) Luruskan kaki ke depan dengan kuat.",
-                question: "Jenis tendangan yang dipraktikkan Sari adalah...",
-                options: ["Tendangan samping", "Tendangan atas", "Tendangan depan", "Tendangan belakang"],
-                correct: 2
-            },
-            {
-                stimulus: "👊 Budi mempelajari pukulan yang dilakukan dengan mendorong tangan lurus ke depan menuju target, seperti mendorong pintu dengan kuat.",
-                question: "Teknik yang dipelajari Budi adalah...",
-                options: ["Pukulan atas", "Pukulan depan", "Pukulan samping", "Tendangan depan"],
-                correct: 1
-            },
-            {
-                stimulus: "🦶 Dina berlatih tendangan dengan langkah: berdiri menyamping, angkat kaki ke samping, lalu luruskan menggunakan sisi luar kaki.",
-                question: "Bagian kaki yang digunakan Dina untuk menendang adalah...",
-                options: ["Ujung kaki", "Sisi luar kaki", "Tumit", "Punggung kaki"],
-                correct: 1
-            },
-            {
-                stimulus: "🔨 Pelatih mendemonstrasikan pukulan atas dengan langkah: (1) Posisi awal berdiri tegak, (2) Angkat tangan tinggi di atas kepala, (3) Ayunkan ke bawah dengan kuat.",
-                question: "Pada langkah kedua, posisi tangan yang benar adalah...",
-                options: ["Di samping badan", "Tinggi di atas kepala", "Di depan dada", "Di belakang punggung"],
-                correct: 1
-            },
-            {
-                stimulus: "🤜 Andi berlatih pukulan samping. Pelatih menekankan: 'Kekuatan pukulan ini berasal dari putaran pinggul dan badan, bukan hanya dari tangan.'",
-                question: "Sumber kekuatan utama pukulan samping adalah...",
-                options: ["Tangan saja", "Putaran pinggul dan badan", "Kaki saja", "Bahu saja"],
-                correct: 1
-            },
-            {
-                stimulus: "🥾 Rudi mempelajari tendangan atas: kaki diayunkan dari bawah ke atas menuju kepala lawan, seperti menendang bola tinggi ke udara.",
-                question: "Arah gerakan tendangan atas adalah...",
-                options: ["Dari atas ke bawah", "Dari bawah ke atas", "Dari samping ke samping", "Lurus ke depan"],
-                correct: 1
-            },
-            {
-                stimulus: "🎯 Guru menjelaskan target pukulan: 'Pukulan atas untuk kepala/bahu, pukulan depan untuk dada/perut, pukulan samping untuk rusuk/pinggang.'",
-                question: "Target yang tepat untuk pukulan depan adalah...",
-                options: ["Kepala atau bahu", "Dada atau perut", "Rusuk atau pinggang", "Kaki atau tangan"],
-                correct: 1
-            },
-            {
-                stimulus: "⚖️ Pelatih berpesan: 'Dalam setiap gerakan pencak silat, keseimbangan adalah kunci utama. Tanpa keseimbangan, gerakan menjadi tidak efektif.'",
-                question: "Hal yang paling penting dalam setiap gerakan pencak silat adalah...",
-                options: ["Kecepatan", "Keseimbangan", "Kekuatan saja", "Gaya yang bagus"],
-                correct: 1
-            },
-            {
-                stimulus: "🦵 Maya berlatih tendangan depan. Guru berkata: 'Gunakan ujung kaki atau telapak kaki untuk mendorong target dengan kuat.'",
-                question: "Bagian kaki yang digunakan untuk tendangan depan adalah...",
-                options: ["Sisi luar kaki", "Ujung kaki atau telapak kaki", "Tumit saja", "Punggung kaki saja"],
-                correct: 1
-            },
-            {
-                stimulus: "🔄 Saat berlatih, Tono mengulang gerakan: posisi awal → gerakan → target → kembali ke posisi siaga. Guru menekankan pentingnya urutan ini.",
-                question: "Mengapa penting kembali ke posisi siaga setelah melakukan teknik?",
-                options: ["Untuk istirahat", "Untuk bersiap gerakan selanjutnya", "Untuk terlihat bagus", "Tidak ada alasan khusus"],
-                correct: 1
-            },
-            {
-                stimulus: "🎪 Lina berlatih pukulan samping tetapi hanya menggerakkan tangan. Pelatih mengoreksi: 'Putar seluruh tubuh, jangan hanya tangan.'",
-                question: "Kesalahan yang dilakukan Lina adalah...",
-                options: ["Tidak memutar tubuh", "Terlalu cepat", "Posisi kaki salah", "Tangan terlalu tinggi"],
-                correct: 0
-            },
-            {
-                stimulus: "🏃‍♂️ Eko kesulitan menjaga keseimbangan saat tendangan samping. Pelatih menyarankan: 'Pastikan kaki tumpuan kuat dan stabil.'",
-                question: "Kunci menjaga keseimbangan saat tendangan samping adalah...",
-                options: ["Menendang dengan cepat", "Kaki tumpuan yang kuat dan stabil", "Menggunakan kedua kaki", "Menutup mata"],
-                correct: 1
-            },
-            {
-                stimulus: "🌟 Pelatih berpesan: 'Pencak silat mengajarkan teknik untuk melindungi diri, disiplin untuk membentuk karakter, dan hormat untuk menghargai orang lain.'",
-                question: "Tiga nilai utama yang diajarkan pencak silat adalah...",
-                options: ["Kekuatan-Kecepatan-Ketangkasan", "Teknik-Disiplin-Hormat", "Serangan-Pertahanan-Keseimbangan", "Fisik-Mental-Spiritual"],
-                correct: 1
-            },
-            {
-                stimulus: "⚡ Dalam latihan, guru berkata: 'Mulai dengan gerakan lambat dan benar, baru kemudian tingkatkan kecepatan. Teknik yang benar lebih penting dari kecepatan.'",
-                question: "Prinsip yang benar dalam berlatih pencak silat adalah...",
-                options: ["Langsung cepat dari awal", "Teknik benar dulu, baru kecepatan", "Kecepatan lebih penting", "Sesuka hati saja"],
-                correct: 1
-            }
-        ];
+        let currentTopic = '';
+        let currentSection = '';
+        let quizQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let studentName = '';
+        let studentClass = '';
 
-        let currentSection = 'main-menu';
-        let latihanData = {
-            nama: '',
-            kelas: '',
-            currentQuestion: 0,
-            score: 0,
-            questions: []
+        // Topic data
+        const topics = {
+            pecahan: {
+                title: 'Operasi Hitung Pecahan',
+                icon: '🍰',
+                color: 'red',
+                materi: `
+                    <h2 class="text-3xl font-bold text-red-600 mb-6">🍰 Operasi Hitung Pecahan</h2>
+                    <div class="space-y-6 text-lg">
+                        <div class="bg-red-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-red-700 mb-4">📖 Apa itu Pecahan?</h3>
+                            <p class="mb-4">Pecahan adalah bilangan yang menunjukkan bagian dari keseluruhan. Contoh: 1/2 artinya 1 bagian dari 2 bagian yang sama.</p>
+                            <div class="text-center">
+                                <div class="inline-block bg-yellow-200 p-4 rounded-xl">
+                                    <span class="text-3xl">🍕</span>
+                                    <p class="text-sm mt-2">1 potong dari 2 potong pizza = 1/2</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-orange-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-orange-700 mb-4">➕ Penjumlahan Pecahan</h3>
+                            <p class="mb-2"><strong>Penyebut sama:</strong> Jumlahkan pembilangnya</p>
+                            <p class="mb-2">Contoh: 2/5 + 1/5 = 3/5</p>
+                            <p class="mb-2"><strong>Penyebut beda:</strong> Samakan penyebut dulu</p>
+                            <p>Contoh: 1/2 + 1/3 = 3/6 + 2/6 = 5/6</p>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-green-700 mb-4">➖ Pengurangan Pecahan</h3>
+                            <p class="mb-2">Sama seperti penjumlahan, tapi kurangkan pembilangnya</p>
+                            <p>Contoh: 3/4 - 1/4 = 2/4 = 1/2</p>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-4">✖️ Perkalian Pecahan</h3>
+                            <p class="mb-2">Kalikan pembilang dengan pembilang, penyebut dengan penyebut</p>
+                            <p>Contoh: 2/3 × 1/4 = 2/12 = 1/6</p>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-purple-700 mb-4">➗ Pembagian Pecahan</h3>
+                            <p class="mb-2">Kalikan dengan kebalikan pecahan pembagi</p>
+                            <p>Contoh: 1/2 ÷ 1/4 = 1/2 × 4/1 = 4/2 = 2</p>
+                        </div>
+                    </div>
+                `,
+                contoh: `
+                    <h2 class="text-3xl font-bold text-red-600 mb-6">💡 Contoh Soal Pecahan</h2>
+                    <div class="space-y-6">
+                        <div class="bg-yellow-50 p-6 rounded-2xl border-l-4 border-yellow-400">
+                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">Soal 1: Penjumlahan</h3>
+                            <p class="text-xl mb-4">Hitunglah: 2/5 + 1/5</p>
+                            <div class="bg-white p-4 rounded-xl">
+                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
+                                <p>Karena penyebutnya sama (5), kita tinggal menjumlahkan pembilangnya:</p>
+                                <p class="text-xl font-bold text-center my-4">2/5 + 1/5 = (2+1)/5 = 3/5</p>
+                                <p class="text-green-600 font-bold">Jawaban: 3/5</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-400">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-4">Soal 2: Penjumlahan Penyebut Beda</h3>
+                            <p class="text-xl mb-4">Hitunglah: 1/3 + 1/6</p>
+                            <div class="bg-white p-4 rounded-xl">
+                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
+                                <p>1. Cari KPK dari 3 dan 6 = 6</p>
+                                <p>2. Ubah ke penyebut yang sama:</p>
+                                <p>   1/3 = 2/6</p>
+                                <p>   1/6 = 1/6</p>
+                                <p class="text-xl font-bold text-center my-4">2/6 + 1/6 = 3/6 = 1/2</p>
+                                <p class="text-green-600 font-bold">Jawaban: 1/2</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-400">
+                            <h3 class="text-2xl font-bold text-green-700 mb-4">Soal 3: Perkalian</h3>
+                            <p class="text-xl mb-4">Hitunglah: 2/3 × 3/4</p>
+                            <div class="bg-white p-4 rounded-xl">
+                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
+                                <p>Kalikan pembilang dengan pembilang, penyebut dengan penyebut:</p>
+                                <p class="text-xl font-bold text-center my-4">2/3 × 3/4 = (2×3)/(3×4) = 6/12 = 1/2</p>
+                                <p class="text-green-600 font-bold">Jawaban: 1/2</p>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                questions: [
+                    {
+                        question: "Hasil dari 3/7 + 2/7 adalah...",
+                        options: ["4/7", "5/7", "6/7", "5/14"],
+                        correct: 1
+                    },
+                    {
+                        question: "Hasil dari 5/8 - 2/8 adalah...",
+                        options: ["3/8", "7/8", "3/16", "7/16"],
+                        correct: 0
+                    },
+                    {
+                        question: "Hasil dari 1/2 + 1/4 adalah...",
+                        options: ["2/6", "2/8", "3/4", "1/6"],
+                        correct: 2
+                    },
+                    {
+                        question: "Hasil dari 2/3 × 1/4 adalah...",
+                        options: ["2/12", "3/7", "2/7", "1/6"],
+                        correct: 3
+                    },
+                    {
+                        question: "Hasil dari 3/4 - 1/2 adalah...",
+                        options: ["1/4", "2/2", "1/2", "2/4"],
+                        correct: 0
+                    },
+                    {
+                        question: "Hasil dari 1/3 + 2/6 adalah...",
+                        options: ["3/9", "2/3", "1/2", "4/6"],
+                        correct: 1
+                    },
+                    {
+                        question: "Hasil dari 2/5 × 3/4 adalah...",
+                        options: ["6/20", "5/9", "3/10", "6/9"],
+                        correct: 2
+                    },
+                    {
+                        question: "Hasil dari 7/8 - 3/8 adalah...",
+                        options: ["4/8", "10/8", "4/16", "1/2"],
+                        correct: 3
+                    },
+                    {
+                        question: "Hasil dari 1/4 ÷ 1/2 adalah...",
+                        options: ["1/8", "1/2", "2", "1/6"],
+                        correct: 1
+                    },
+                    {
+                        question: "Hasil dari 2/3 + 1/6 adalah...",
+                        options: ["3/9", "5/6", "1/2", "4/9"],
+                        correct: 1
+                    }
+                ]
+            },
+            perbandingan: {
+                title: 'Perbandingan',
+                icon: '⚖️',
+                color: 'green',
+                materi: `
+                    <h2 class="text-3xl font-bold text-green-600 mb-6">⚖️ Perbandingan</h2>
+                    <div class="space-y-6 text-lg">
+                        <div class="bg-green-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-green-700 mb-4">📖 Apa itu Perbandingan?</h3>
+                            <p class="mb-4">Perbandingan adalah cara membandingkan dua atau lebih besaran yang sejenis.</p>
+                            <div class="text-center">
+                                <div class="inline-block bg-yellow-200 p-4 rounded-xl">
+                                    <span class="text-3xl">👦👧</span>
+                                    <p class="text-sm mt-2">Perbandingan anak laki-laki : perempuan = 3 : 2</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-4">📏 Cara Menulis Perbandingan</h3>
+                            <p class="mb-2">Ada 3 cara menulis perbandingan:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><strong>Dengan titik dua (:)</strong> → 3 : 4</li>
+                                <li><strong>Dengan kata "banding"</strong> → 3 banding 4</li>
+                                <li><strong>Dengan pecahan</strong> → 3/4</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-orange-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-orange-700 mb-4">🔄 Perbandingan Senilai</h3>
+                            <p class="mb-2">Jika satu besaran bertambah, besaran lain juga bertambah dengan perbandingan yang sama.</p>
+                            <p>Contoh: Semakin banyak barang yang dibeli, semakin mahal harganya.</p>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-purple-700 mb-4">🔄 Perbandingan Berbalik Nilai</h3>
+                            <p class="mb-2">Jika satu besaran bertambah, besaran lain berkurang.</p>
+                            <p>Contoh: Semakin cepat kendaraan, semakin sedikit waktu yang diperlukan.</p>
+                        </div>
+                        
+                        <div class="bg-red-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-red-700 mb-4">📐 Skala</h3>
+                            <p class="mb-2">Skala adalah perbandingan antara jarak pada peta dengan jarak sebenarnya.</p>
+                            <p>Contoh: Skala 1 : 100.000 artinya 1 cm pada peta = 100.000 cm = 1 km di dunia nyata.</p>
+                        </div>
+                    </div>
+                `,
+                contoh: `
+                    <h2 class="text-3xl font-bold text-green-600 mb-6">💡 Contoh Soal Perbandingan</h2>
+                    <div class="space-y-6">
+                        <div class="bg-yellow-50 p-6 rounded-2xl border-l-4 border-yellow-400">
+                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">Soal 1: Perbandingan Sederhana</h3>
+                            <p class="text-xl mb-4">Di kelas ada 15 siswa laki-laki dan 10 siswa perempuan. Berapa perbandingan siswa laki-laki dan perempuan?</p>
+                            <div class="bg-white p-4 rounded-xl">
+                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
+                                <p>Perbandingan = laki-laki : perempuan</p>
+                                <p>= 15 : 10</p>
+                                <p>Sederhanakan dengan membagi kedua angka dengan FPB (5):</p>
+                                <p class="text-xl font-bold text-center my-4">15 : 10 = 3 : 2</p>
+                                <p class="text-green-600 font-bold">Jawaban: 3 : 2</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-400">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-4">Soal 2: Perbandingan Senilai</h3>
+                            <p class="text-xl mb-4">Jika 3 kg apel harganya Rp 45.000, berapa harga 5 kg apel?</p>
+                            <div class="bg-white p-4 rounded-xl">
+                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
+                                <p>Gunakan perbandingan senilai:</p>
+                                <p>3 kg : Rp 45.000 = 5 kg : x</p>
+                                <p>3/45.000 = 5/x</p>
+                                <p>3x = 5 × 45.000</p>
+                                <p>3x = 225.000</p>
+                                <p class="text-xl font-bold text-center my-4">x = 75.000</p>
+                                <p class="text-green-600 font-bold">Jawaban: Rp 75.000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-400">
+                            <h3 class="text-2xl font-bold text-green-700 mb-4">Soal 3: Skala Peta</h3>
+                            <p class="text-xl mb-4">Pada peta dengan skala 1 : 200.000, jarak dua kota adalah 4 cm. Berapa jarak sebenarnya?</p>
+                            <div class="bg-white p-4 rounded-xl">
+                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
+                                <p>Skala 1 : 200.000 artinya 1 cm pada peta = 200.000 cm sebenarnya</p>
+                                <p>Jarak pada peta = 4 cm</p>
+                                <p>Jarak sebenarnya = 4 × 200.000 = 800.000 cm</p>
+                                <p class="text-xl font-bold text-center my-4">800.000 cm = 8 km</p>
+                                <p class="text-green-600 font-bold">Jawaban: 8 km</p>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                questions: [
+                    {
+                        question: "Perbandingan 12 : 8 dalam bentuk paling sederhana adalah...",
+                        options: ["6 : 4", "3 : 2", "4 : 3", "2 : 3"],
+                        correct: 1
+                    },
+                    {
+                        question: "Jika 4 pensil harganya Rp 8.000, maka harga 6 pensil adalah...",
+                        options: ["Rp 10.000", "Rp 12.000", "Rp 14.000", "Rp 16.000"],
+                        correct: 1
+                    },
+                    {
+                        question: "Pada peta skala 1 : 100.000, jarak 2 cm sama dengan jarak sebenarnya...",
+                        options: ["2 km", "20 km", "200 km", "2000 km"],
+                        correct: 0
+                    },
+                    {
+                        question: "Perbandingan umur Ani dan Budi adalah 3 : 4. Jika umur Ani 12 tahun, umur Budi adalah...",
+                        options: ["15 tahun", "16 tahun", "18 tahun", "20 tahun"],
+                        correct: 1
+                    },
+                    {
+                        question: "Jika 5 orang dapat menyelesaikan pekerjaan dalam 12 hari, maka 3 orang akan menyelesaikan pekerjaan dalam...",
+                        options: ["15 hari", "18 hari", "20 hari", "24 hari"],
+                        correct: 2
+                    },
+                    {
+                        question: "Perbandingan 15 : 25 sama dengan...",
+                        options: ["2 : 3", "3 : 5", "5 : 3", "3 : 2"],
+                        correct: 1
+                    },
+                    {
+                        question: "Jika 8 kg beras harganya Rp 96.000, maka harga 3 kg beras adalah...",
+                        options: ["Rp 36.000", "Rp 32.000", "Rp 30.000", "Rp 24.000"],
+                        correct: 0
+                    },
+                    {
+                        question: "Skala 1 : 50.000 artinya 1 cm pada peta sama dengan...",
+                        options: ["50 m", "500 m", "5 km", "50 km"],
+                        correct: 1
+                    },
+                    {
+                        question: "Jika perbandingan kelereng Andi dan Budi 4 : 5, dan jumlah kelereng mereka 36, maka kelereng Andi adalah...",
+                        options: ["16 buah", "18 buah", "20 buah", "24 buah"],
+                        correct: 0
+                    },
+                    {
+                        question: "Mobil dengan kecepatan 60 km/jam menempuh jarak dalam 4 jam. Jika kecepatannya 80 km/jam, waktu yang diperlukan adalah...",
+                        options: ["2 jam", "3 jam", "5 jam", "6 jam"],
+                        correct: 1
+                    }
+                ]
+            },
+            bangun: {
+                title: 'Luas dan Keliling Bangun Datar',
+                icon: '📐',
+                color: 'blue',
+                materi: `
+                    <h2 class="text-3xl font-bold text-blue-600 mb-6">📐 Luas dan Keliling Bangun Datar</h2>
+                    <div class="space-y-6 text-lg">
+                        <div class="bg-blue-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-4">📖 Pengertian</h3>
+                            <p class="mb-2"><strong>Keliling:</strong> Jumlah panjang semua sisi bangun datar</p>
+                            <p><strong>Luas:</strong> Besar daerah yang dibatasi oleh sisi-sisi bangun datar</p>
+                        </div>
+                        
+                        <div class="bg-red-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-red-700 mb-4">🟩 Persegi</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p><strong>Keliling = 4 × sisi</strong></p>
+                                    <p><strong>Luas = sisi × sisi</strong></p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-red-200 border-2 border-red-400 mx-auto"></div>
+                                    <p class="text-sm mt-2">Persegi</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-green-700 mb-4">📱 Persegi Panjang</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p><strong>Keliling = 2 × (panjang + lebar)</strong></p>
+                                    <p><strong>Luas = panjang × lebar</strong></p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-24 h-16 bg-green-200 border-2 border-green-400 mx-auto"></div>
+                                    <p class="text-sm mt-2">Persegi Panjang</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">🔺 Segitiga</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p><strong>Keliling = sisi a + sisi b + sisi c</strong></p>
+                                    <p><strong>Luas = ½ × alas × tinggi</strong></p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-0 h-0 border-l-12 border-r-12 border-b-16 border-l-transparent border-r-transparent border-b-yellow-200 mx-auto" style="border-left: 24px solid transparent; border-right: 24px solid transparent; border-bottom: 32px solid #fef3c7;"></div>
+                                    <p class="text-sm mt-2">Segitiga</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-purple-700 mb-4">⭕ Lingkaran</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p><strong>Keliling = 2 × π × r</strong></p>
+                                    <p><strong>Luas = π × r²</strong></p>
+                                    <p class="text-sm">π ≈ 3,14 atau 22/7</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-purple-200 border-2 border-purple-400 rounded-full mx-auto"></div>
+                                    <p class="text-sm mt-2">Lingkaran</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                contoh: `
+                    <h2 class="text-3xl font-bold text-blue-600 mb-6">💡 Contoh Soal Bangun Datar</h2>
+                    <div class="space-y-6">
+                        <div class="bg-yellow-50 p-6 rounded-2xl border-l-4 border-yellow-400">
+                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">Soal 1: Persegi</h3>
+                            <p class="text-xl mb-4">Sebuah persegi memiliki sisi 8 cm. Hitunglah keliling dan luasnya!</p>
+                            <div class="bg-white p-4 rounded-xl">
+                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
+                                <p>Diketahui: sisi = 8 cm</p>
+                                <p><strong>Keliling:</strong></p>
+                                <p>K = 4 × sisi = 4 × 8 = 32 cm</p>
+                                <p><strong>Luas:</strong></p>
+                                <p>L = sisi × sisi = 8 × 8 = 64 cm²</p>
+                                <p class="text-green-600 font-bold mt-4">Jawaban: Keliling = 32 cm, Luas = 64 cm²</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-400">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-4">Soal 2: Persegi Panjang</h3>
+                            <p class="text-xl mb-4">Sebuah persegi panjang memiliki panjang 12 cm dan lebar 8 cm. Hitunglah keliling dan luasnya!</p>
+                            <div class="bg-white p-4 rounded-xl">
+                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
+                                <p>Diketahui: panjang = 12 cm, lebar = 8 cm</p>
+                                <p><strong>Keliling:</strong></p>
+                                <p>K = 2 × (p + l) = 2 × (12 + 8) = 2 × 20 = 40 cm</p>
+                                <p><strong>Luas:</strong></p>
+                                <p>L = p × l = 12 × 8 = 96 cm²</p>
+                                <p class="text-green-600 font-bold mt-4">Jawaban: Keliling = 40 cm, Luas = 96 cm²</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-400">
+                            <h3 class="text-2xl font-bold text-green-700 mb-4">Soal 3: Lingkaran</h3>
+                            <p class="text-xl mb-4">Sebuah lingkaran memiliki jari-jari 7 cm. Hitunglah keliling dan luasnya! (π = 22/7)</p>
+                            <div class="bg-white p-4 rounded-xl">
+                                <p class="text-lg"><strong>Penyelesaian:</strong></p>
+                                <p>Diketahui: r = 7 cm, π = 22/7</p>
+                                <p><strong>Keliling:</strong></p>
+                                <p>K = 2 × π × r = 2 × 22/7 × 7 = 44 cm</p>
+                                <p><strong>Luas:</strong></p>
+                                <p>L = π × r² = 22/7 × 7² = 22/7 × 49 = 154 cm²</p>
+                                <p class="text-green-600 font-bold mt-4">Jawaban: Keliling = 44 cm, Luas = 154 cm²</p>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                questions: [
+                    {
+                        question: "Keliling persegi dengan sisi 6 cm adalah...",
+                        options: ["12 cm", "18 cm", "24 cm", "36 cm"],
+                        correct: 2
+                    },
+                    {
+                        question: "Luas persegi panjang dengan panjang 10 cm dan lebar 6 cm adalah...",
+                        options: ["32 cm²", "60 cm²", "16 cm²", "100 cm²"],
+                        correct: 1
+                    },
+                    {
+                        question: "Keliling persegi panjang dengan panjang 8 cm dan lebar 5 cm adalah...",
+                        options: ["13 cm", "26 cm", "40 cm", "80 cm"],
+                        correct: 1
+                    },
+                    {
+                        question: "Luas segitiga dengan alas 12 cm dan tinggi 8 cm adalah...",
+                        options: ["48 cm²", "96 cm²", "20 cm²", "24 cm²"],
+                        correct: 0
+                    },
+                    {
+                        question: "Keliling lingkaran dengan jari-jari 14 cm (π = 22/7) adalah...",
+                        options: ["44 cm", "88 cm", "176 cm", "616 cm"],
+                        correct: 1
+                    },
+                    {
+                        question: "Luas persegi dengan keliling 20 cm adalah...",
+                        options: ["25 cm²", "100 cm²", "20 cm²", "400 cm²"],
+                        correct: 0
+                    },
+                    {
+                        question: "Jika luas persegi panjang 72 cm² dan panjangnya 9 cm, maka lebarnya adalah...",
+                        options: ["6 cm", "7 cm", "8 cm", "9 cm"],
+                        correct: 2
+                    },
+                    {
+                        question: "Luas lingkaran dengan diameter 14 cm (π = 22/7) adalah...",
+                        options: ["154 cm²", "308 cm²", "44 cm²", "88 cm²"],
+                        correct: 0
+                    },
+                    {
+                        question: "Keliling segitiga sama sisi dengan panjang sisi 7 cm adalah...",
+                        options: ["14 cm", "21 cm", "28 cm", "49 cm"],
+                        correct: 1
+                    },
+                    {
+                        question: "Jika keliling persegi 32 cm, maka luasnya adalah...",
+                        options: ["64 cm²", "128 cm²", "256 cm²", "32 cm²"],
+                        correct: 0
+                    }
+                ]
+            }
         };
 
-        function showSection(sectionId) {
-            // Sembunyikan semua section
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById('main-menu').style.display = 'none';
-
-            // Tampilkan section yang dipilih
-            document.getElementById(sectionId).classList.add('active');
-            currentSection = sectionId;
-        }
-
         function showMainMenu() {
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById('main-menu').style.display = 'block';
-            currentSection = 'main-menu';
+            document.getElementById('mainMenu').classList.remove('hidden');
+            document.getElementById('topicContent').classList.add('hidden');
+            currentTopic = '';
+            currentSection = '';
         }
 
-        function shuffleArray(array) {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
+        function showTopic(topic) {
+            currentTopic = topic;
+            document.getElementById('mainMenu').classList.add('hidden');
+            document.getElementById('topicContent').classList.remove('hidden');
+            showSection('materi');
         }
 
-        function startLatihan() {
-            const nama = document.getElementById('nama-latihan').value.trim();
-            const kelas = document.getElementById('kelas-latihan').value;
-
-            if (!nama || !kelas) {
-                showCustomAlert('🚨 Ups! Mohon isi nama dan pilih kelas terlebih dahulu ya! 😊');
+        function showSection(section) {
+            currentSection = section;
+            const contentArea = document.getElementById('contentArea');
+            
+            // Update button styles
+            document.querySelectorAll('#topicContent button').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-white');
+            });
+            document.getElementById(section + 'Btn').classList.add('ring-4', 'ring-white');
+            
+            if (section === 'latihan') {
+                showStudentForm();
                 return;
             }
-
-            latihanData.nama = nama;
-            latihanData.kelas = kelas;
-            latihanData.currentQuestion = 0;
-            latihanData.score = 0;
-            latihanData.questions = shuffleArray(latihanSoal);
-
-            // Acak jawaban untuk setiap soal
-            latihanData.questions.forEach(q => {
-                const correctAnswer = q.options[q.correct];
-                q.options = shuffleArray(q.options);
-                q.correct = q.options.indexOf(correctAnswer);
-            });
-
-            showSection('latihan');
-            displayLatihanQuestion();
-        }
-
-        function displayLatihanQuestion() {
-            const current = latihanData.questions[latihanData.currentQuestion];
-            document.getElementById('latihan-info').textContent = `👤 ${latihanData.nama} - 🏫 Kelas ${latihanData.kelas}`;
-            document.getElementById('latihan-current').textContent = latihanData.currentQuestion + 1;
-            document.getElementById('latihan-score').textContent = Math.round(latihanData.score);
-            document.getElementById('latihan-number').textContent = latihanData.currentQuestion + 1;
             
-            // Tampilkan stimulus dan pertanyaan
-            const questionContainer = document.getElementById('latihan-question');
-            if (current.stimulus) {
-                questionContainer.innerHTML = `
-                    <div class="stimulus-box">
-                        <h4>📖 Cerita:</h4>
-                        <p>${current.stimulus}</p>
-                    </div>
-                    <p style="font-size: 1.3em; font-weight: bold; color: #667eea; margin: 0;"><strong>❓ Pertanyaan:</strong> ${current.question}</p>
+            if (section === 'kesimpulan') {
+                showKesimpulan();
+                return;
+            }
+            
+            contentArea.innerHTML = topics[currentTopic][section];
+        }
+
+        function showKesimpulan() {
+            const topic = topics[currentTopic];
+            const contentArea = document.getElementById('contentArea');
+            
+            let kesimpulanContent = '';
+            
+            if (currentTopic === 'pecahan') {
+                kesimpulanContent = `
+                    <h2 class="text-3xl font-bold text-red-600 mb-6">🎯 Kesimpulan Operasi Hitung Pecahan</h2>
+                    <div class="space-y-6">
+                        <div class="bg-red-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-red-700 mb-4">📝 Rangkuman</h3>
+                            <ul class="space-y-2 text-lg">
+                                <li>✅ Pecahan menunjukkan bagian dari keseluruhan</li>
+                                <li>✅ Penjumlahan/pengurangan: samakan penyebut dulu</li>
+                                <li>✅ Perkalian: kalikan pembilang dengan pembilang, penyebut dengan penyebut</li>
+                                <li>✅ Pembagian: kalikan dengan kebalikan pecahan pembagi</li>
+                                <li>✅ Selalu sederhanakan hasil akhir</li>
+                            </ul>
+                        </div>
                 `;
-            } else {
-                questionContainer.innerHTML = `<h3>${current.question}</h3>`;
+            } else if (currentTopic === 'perbandingan') {
+                kesimpulanContent = `
+                    <h2 class="text-3xl font-bold text-green-600 mb-6">🎯 Kesimpulan Perbandingan</h2>
+                    <div class="space-y-6">
+                        <div class="bg-green-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-green-700 mb-4">📝 Rangkuman</h3>
+                            <ul class="space-y-2 text-lg">
+                                <li>✅ Perbandingan membandingkan dua besaran sejenis</li>
+                                <li>✅ Perbandingan senilai: satu naik, yang lain naik</li>
+                                <li>✅ Perbandingan berbalik nilai: satu naik, yang lain turun</li>
+                                <li>✅ Skala menunjukkan perbandingan jarak peta dengan jarak sebenarnya</li>
+                                <li>✅ Sederhanakan perbandingan dengan FPB</li>
+                            </ul>
+                        </div>
+                `;
+            } else if (currentTopic === 'bangun') {
+                kesimpulanContent = `
+                    <h2 class="text-3xl font-bold text-blue-600 mb-6">🎯 Kesimpulan Luas dan Keliling</h2>
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-6 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-4">📝 Rangkuman</h3>
+                            <ul class="space-y-2 text-lg">
+                                <li>✅ Keliling = jumlah panjang semua sisi</li>
+                                <li>✅ Luas = besar daerah yang dibatasi sisi-sisi</li>
+                                <li>✅ Setiap bangun datar punya rumus keliling dan luas sendiri</li>
+                                <li>✅ Satuan keliling: cm, m, km</li>
+                                <li>✅ Satuan luas: cm², m², km²</li>
+                            </ul>
+                        </div>
+                `;
             }
-
-            const optionsContainer = document.getElementById('latihan-options');
-            optionsContainer.innerHTML = '';
-
-            current.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.className = 'option-btn';
-                button.textContent = option;
-                button.onclick = () => selectLatihanAnswer(index);
-                optionsContainer.appendChild(button);
-            });
-
-            document.getElementById('latihan-next').style.display = 'none';
-            document.getElementById('latihan-finish').style.display = 'none';
+            
+            kesimpulanContent += `
+                        <div class="bg-gradient-to-r from-purple-400 to-pink-400 p-6 rounded-2xl text-white text-center">
+                            <h3 class="text-2xl font-bold mb-4">🌟 Motivasi Belajar</h3>
+                            <div class="space-y-3 text-lg">
+                                <p>"Matematika adalah bahasa alam semesta. Dengan belajar matematika, kamu bisa memahami dunia dengan lebih baik!"</p>
+                                <p class="font-bold">💪 Terus berlatih dan jangan takut salah!</p>
+                                <p class="font-bold">🎯 Setiap kesalahan adalah langkah menuju kesuksesan!</p>
+                                <p class="font-bold">⭐ Kamu pasti bisa menguasai matematika!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-6 rounded-2xl text-center">
+                            <h3 class="text-2xl font-bold text-yellow-700 mb-4">🏆 Tips Sukses Belajar Matematika</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                                <div class="bg-white p-4 rounded-xl">
+                                    <span class="text-3xl">📚</span>
+                                    <p class="font-bold mt-2">Rajin Berlatih</p>
+                                    <p class="text-sm">Kerjakan soal setiap hari</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl">
+                                    <span class="text-3xl">🤔</span>
+                                    <p class="font-bold mt-2">Pahami Konsep</p>
+                                    <p class="text-sm">Jangan hanya menghafal rumus</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl">
+                                    <span class="text-3xl">❓</span>
+                                    <p class="font-bold mt-2">Berani Bertanya</p>
+                                    <p class="text-sm">Tanya jika ada yang tidak paham</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl">
+                                    <span class="text-3xl">👥</span>
+                                    <p class="font-bold mt-2">Belajar Bersama</p>
+                                    <p class="text-sm">Diskusi dengan teman</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            
+            contentArea.innerHTML = kesimpulanContent;
         }
 
-        function selectLatihanAnswer(selectedIndex) {
-            const current = latihanData.questions[latihanData.currentQuestion];
-            const buttons = document.querySelectorAll('#latihan-options .option-btn');
+        function showStudentForm() {
+            document.getElementById('studentForm').classList.remove('hidden');
+        }
 
+        function closeStudentForm() {
+            document.getElementById('studentForm').classList.add('hidden');
+        }
+
+        function startQuiz() {
+            studentName = document.getElementById('studentName').value.trim();
+            studentClass = document.getElementById('studentClass').value;
+            
+            if (!studentName) {
+                alert('Silakan masukkan nama terlebih dahulu!');
+                return;
+            }
+            
+            closeStudentForm();
+            
+            // Shuffle questions
+            quizQuestions = [...topics[currentTopic].questions].sort(() => Math.random() - 0.5);
+            currentQuestionIndex = 0;
+            score = 0;
+            
+            showQuizQuestion();
+        }
+
+        function showQuizQuestion() {
+            const contentArea = document.getElementById('contentArea');
+            const question = quizQuestions[currentQuestionIndex];
+            const questionNumber = currentQuestionIndex + 1;
+            const totalQuestions = quizQuestions.length;
+            
+            contentArea.innerHTML = `
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold text-purple-600 mb-2">✏️ Latihan Soal</h2>
+                    <p class="text-xl text-gray-600">Soal ${questionNumber} dari ${totalQuestions}</p>
+                    <div class="bg-purple-200 rounded-full h-4 mt-4">
+                        <div class="bg-purple-600 h-4 rounded-full transition-all duration-300" style="width: ${(questionNumber/totalQuestions)*100}%"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-purple-50 p-6 rounded-2xl mb-6">
+                    <h3 class="text-2xl font-bold text-purple-700 mb-4">Pertanyaan:</h3>
+                    <p class="text-xl mb-6">${question.question}</p>
+                    
+                    <div class="space-y-3">
+                        ${question.options.map((option, index) => `
+                            <button onclick="selectAnswer(${index})" class="w-full text-left p-4 bg-white hover:bg-purple-100 border-2 border-purple-200 hover:border-purple-400 rounded-xl text-lg transition-all duration-300 transform hover:scale-105">
+                                <span class="font-bold text-purple-600">${String.fromCharCode(65 + index)}.</span> ${option}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <p class="text-lg text-gray-600">Nama: <span class="font-bold text-purple-600">${studentName}</span> | Kelas: <span class="font-bold text-purple-600">${studentClass}</span></p>
+                </div>
+            `;
+        }
+
+        function selectAnswer(selectedIndex) {
+            const question = quizQuestions[currentQuestionIndex];
+            const isCorrect = selectedIndex === question.correct;
+            
+            if (isCorrect) {
+                score += 10;
+            }
+            
+            // Show feedback
+            const buttons = document.querySelectorAll('#contentArea button');
             buttons.forEach((btn, index) => {
-                btn.onclick = null;
-                if (index === current.correct) {
-                    btn.classList.add('correct');
-                } else if (index === selectedIndex) {
-                    btn.classList.add('incorrect');
+                btn.disabled = true;
+                if (index === question.correct) {
+                    btn.classList.add('bg-green-500', 'text-white', 'border-green-500');
+                } else if (index === selectedIndex && !isCorrect) {
+                    btn.classList.add('bg-red-500', 'text-white', 'border-red-500');
                 }
             });
+            
+            setTimeout(() => {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizQuestions.length) {
+                    showQuizQuestion();
+                } else {
+                    showQuizResults();
+                }
+            }, 1500);
+        }
 
-            if (selectedIndex === current.correct) {
-                latihanData.score += 100/15; // Skor maksimal 100
-            }
-
-            document.getElementById('latihan-score').textContent = Math.round(latihanData.score);
-
-            if (latihanData.currentQuestion < 14) {
-                document.getElementById('latihan-next').style.display = 'inline-block';
+        function showQuizResults() {
+            const percentage = (score / (quizQuestions.length * 10)) * 100;
+            let resultIcon, resultMessage, resultColor;
+            
+            if (percentage >= 80) {
+                resultIcon = '🏆';
+                resultMessage = 'Luar Biasa!';
+                resultColor = 'text-yellow-500';
+            } else if (percentage >= 60) {
+                resultIcon = '🎉';
+                resultMessage = 'Bagus Sekali!';
+                resultColor = 'text-green-500';
+            } else if (percentage >= 40) {
+                resultIcon = '👍';
+                resultMessage = 'Cukup Baik!';
+                resultColor = 'text-blue-500';
             } else {
-                document.getElementById('latihan-finish').style.display = 'inline-block';
+                resultIcon = '💪';
+                resultMessage = 'Terus Berlatih!';
+                resultColor = 'text-orange-500';
             }
+            
+            document.getElementById('resultIcon').textContent = resultIcon;
+            document.getElementById('resultContent').innerHTML = `
+                <p class="text-2xl font-bold ${resultColor} mb-2">${resultMessage}</p>
+                <p class="text-lg mb-2">Nama: <span class="font-bold">${studentName}</span></p>
+                <p class="text-lg mb-2">Kelas: <span class="font-bold">${studentClass}</span></p>
+                <p class="text-lg mb-2">Skor: <span class="font-bold text-purple-600">${score} / ${quizQuestions.length * 10}</span></p>
+                <p class="text-lg">Nilai: <span class="font-bold text-purple-600">${percentage.toFixed(0)}%</span></p>
+            `;
+            
+            document.getElementById('quizResults').classList.remove('hidden');
         }
 
-        function nextLatihanQuestion() {
-            latihanData.currentQuestion++;
-            displayLatihanQuestion();
+        function closeResults() {
+            document.getElementById('quizResults').classList.add('hidden');
+            showSection('kesimpulan');
         }
 
-        function finishLatihan() {
-            const finalScore = Math.round(latihanData.score);
-            let grade = '';
-            let emoji = '';
-            if (finalScore >= 90) { grade = 'A (Sangat Baik)'; emoji = '🌟'; }
-            else if (finalScore >= 80) { grade = 'B (Baik)'; emoji = '👍'; }
-            else if (finalScore >= 70) { grade = 'C (Cukup)'; emoji = '😊'; }
-            else { grade = 'D (Perlu Belajar Lagi)'; emoji = '💪'; }
-
-            showCustomAlert(`🎉 Latihan Selesai! ${emoji}\n\n👤 Nama: ${latihanData.nama}\n🏫 Kelas: ${latihanData.kelas}\n🏆 Skor: ${finalScore}\n📊 Nilai: ${grade}\n\n${emoji} Selamat! Terus semangat belajar pencak silat ya! 🚀`);
-            showMainMenu();
-        }
-
-        function showCustomAlert(message) {
-            // Create custom alert modal
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.6);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-                animation: fadeIn 0.3s ease-out;
-            `;
-
-            const alertBox = document.createElement('div');
-            alertBox.style.cssText = `
-                background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-                padding: 35px;
-                border-radius: 20px;
-                text-align: center;
-                max-width: 450px;
-                box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-                border: 3px solid #667eea;
-                animation: slideUp 0.3s ease-out;
-            `;
-
-            const messageText = document.createElement('p');
-            messageText.textContent = message;
-            messageText.style.cssText = `
-                font-size: 1.2em;
-                line-height: 1.6;
-                margin-bottom: 25px;
-                white-space: pre-line;
-                color: #333;
-                font-family: 'Comic Sans MS', cursive;
-            `;
-
-            const okButton = document.createElement('button');
-            okButton.textContent = '👍 OK, Siap!';
-            okButton.style.cssText = `
-                background: linear-gradient(45deg, #667eea, #764ba2);
-                color: white;
-                border: none;
-                padding: 15px 30px;
-                border-radius: 25px;
-                font-size: 1.2em;
-                cursor: pointer;
-                font-family: 'Comic Sans MS', cursive;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                box-shadow: 0 5px 15px rgba(102,126,234,0.4);
-            `;
-
-            okButton.onmouseover = () => {
-                okButton.style.transform = 'scale(1.05)';
-                okButton.style.boxShadow = '0 8px 25px rgba(102,126,234,0.6)';
-            };
-
-            okButton.onmouseout = () => {
-                okButton.style.transform = 'scale(1)';
-                okButton.style.boxShadow = '0 5px 15px rgba(102,126,234,0.4)';
-            };
-
-            okButton.onclick = () => {
-                modal.style.animation = 'fadeOut 0.3s ease-out';
-                setTimeout(() => document.body.removeChild(modal), 300);
-            };
-
-            // Add CSS animations
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes fadeIn {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
-                }
-                @keyframes fadeOut {
-                    from { opacity: 1; }
-                    to { opacity: 0; }
-                }
-                @keyframes slideUp {
-                    from { transform: translateY(50px); opacity: 0; }
-                    to { transform: translateY(0); opacity: 1; }
-                }
-            `;
-            document.head.appendChild(style);
-
-            alertBox.appendChild(messageText);
-            alertBox.appendChild(okButton);
-            modal.appendChild(alertBox);
-            document.body.appendChild(modal);
-        }
+        // Initialize
+        showMainMenu();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e7cbcc02073fff',t:'MTc2MDQ1MjQ1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e922a58504a03b',t:'MTc2MDQ2NjQ5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
